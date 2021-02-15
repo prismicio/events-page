@@ -25,7 +25,7 @@ export default function htmlSerializer(type, element, content, children, key) {
       );
     case Elements.heading3:
       return (
-        <Heading key={uuidv4()} size="lg" as="h3" mb="2">
+        <Heading key={uuidv4()} color="white" size="lg" as="h3" mb="2">
           {children}
         </Heading>
       );

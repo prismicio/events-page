@@ -7,9 +7,6 @@ import {
 import Layout from '@/modules/layout';
 
 const customTheme = {
-  fonts: {
-    heading: 'Roboto Slab',
-  },
   colors: {
     black: '#0C0C0C',
     brand: {
@@ -24,6 +21,13 @@ const customTheme = {
     largest: '0.3em',
   },
   components: {
+    Container: {
+      sizes: {
+        full: {
+          width: '100%',
+        },
+      },
+    },
     Text: {
       variants: {
         tagline: {
@@ -31,6 +35,11 @@ const customTheme = {
           fontWeight: 'bold',
           letterSpacing: 'largest',
           opacity: '70%',
+        },
+        date: {
+          color: 'white',
+          fontSize: 'md',
+          fontWeight: 'bold',
         },
       },
     },

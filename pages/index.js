@@ -20,11 +20,12 @@ const leftSideStyles = {
 };
 
 const SliceZone = ({ slices }) => {
-  return slices?.map((slice) => {
+  return slices?.map((slice, index) => {
     switch (slice.type) {
       case 'upcoming':
         return (
           <UpcomingList
+            key={`${slice.type}-${index}`}
             heading={slice.primary.heading}
             topBarIcon={slice.primary.top_bar_icon}
             eventIcon={slice.primary.event_icon}
@@ -69,7 +70,7 @@ export default function IndexPage({ show }) {
         <VideoBg source={show?.video?.url} />
       </Box>
       <Box flex={1} bg="black">
-        <Container>
+        <Container maxW="full">
           <SliceZone slices={show?.body} />
         </Container>
       </Box>
