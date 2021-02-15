@@ -7,7 +7,7 @@ const leftSideStyles = {
   display: 'inline-flex',
   flexGrow: 1,
   position: 'relative',
-  height: ['40vh', '40vh', '100vh'],
+  height: ['60vh', '60vh', '100vh'],
   _after: {
     content: '""',
     position: 'absolute',
