@@ -3,49 +3,49 @@ import {
   extendTheme,
   GlobalStyle,
   CSSReset,
-} from "@chakra-ui/react";
-import Layout from "@/modules/layout";
+} from '@chakra-ui/react';
+import Layout from '@/modules/layout';
 
 const customTheme = {
   fonts: {
-    heading: "Roboto Slab",
+    heading: 'Roboto Slab',
   },
   colors: {
-    black: "#0C0C0C",
+    black: '#0C0C0C',
     brand: {
-      900: "blue",
-      800: "red",
-      700: "yellow",
-      600: "pink",
+      900: 'blue',
+      800: 'red',
+      700: 'yellow',
+      600: 'pink',
     },
   },
   components: {
     Container: {
       sizes: {
         default: {
-          maxWidth: "1280px",
+          maxWidth: '1280px',
         },
       },
       variants: {
-        "dev-mode": {},
+        'dev-mode': {},
       },
     },
     Link: {
       sizes: {
         large: {
-          p: "4",
+          p: '4',
         },
       },
       variants: {
         amz: {
-          w: "100%",
-          textAlign: "center",
-          display: "inline-block",
-          bg: "yellow.400",
-          borderRadius: "4px",
+          w: '100%',
+          textAlign: 'center',
+          display: 'inline-block',
+          bg: 'yellow.400',
+          borderRadius: '4px',
           _hover: {
-            bg: "yellow.500",
-            textDecoration: "none",
+            bg: 'yellow.500',
+            textDecoration: 'none',
           },
         },
       },

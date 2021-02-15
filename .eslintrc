@@ -1,0 +1,64 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "airbnb"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": [
+      2,
+      {
+        "html": "enforce",
+        "custom": "ignore",
+        "explicitSpread": "enforce",
+        "exceptions": []
+      }
+    ],
+    "object-curly-newline": [
+      "off",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@/modules", "./modules"],
+          ["@/lib/*", "./lib/"],
+          ["@/theme/*", "./theme"],
+          ["@/utils/*", "./utils/"],
+          ["@/mocks/*", "./mocks/"]
+        ],
+        "extensions": [".js", ".jsx", ".json"]
+      }
+    }
+  },
+  "plugins": []
+}

@@ -1,43 +1,47 @@
-import { Flex, Box, Container, Text } from "@chakra-ui/react";
+import VideoBg from '@/modules/pages/show/video-bg';
+import { Flex, Box, Image, Text, Container, Center } from '@chakra-ui/react';
+import { getShowByUid } from 'lib/prismic';
 
-const VideoBg = () => {
-  return (
-    <Box
-      position="relative"
-      _after={{
-        content: '"/"',
-        position: "absolute",
-        bg: "red.600",
-        opacity: "0.5",
-        top: "0",
-        left: "0",
-        right: "0",
-        bottom: "0",
-      }}
-    >
-      <Box
-        autoPlay
-        loop
-        muted
-        as="video"
-        height={["50vh", "50vh", "100vh"]}
-        w="100%"
-        objectFit="cover"
-      >
-        <Box
-          as="source"
-          src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-changing-lights-1240-large.mp4"
-        />
-      </Box>
-    </Box>
-  );
+const after = {
+  content: '""',
+  position: 'absolute',
+  bgGradient: ['linear(to-r, transparent 10%,  black 100%)'],
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
 };
 
-export default function IndexPage({ allEvents }) {
+export default function IndexPage({ show }) {
+  console.log(show);
   return (
-    <Flex flexDir={["column", "column", "row"]} minH="100vh">
-      <Box flex={["0", "0", 1]}>
-        <VideoBg />
+    <Flex wrap="wrap">
+      <Box
+        display="flex"
+        flex={1}
+        bg="red.600"
+        position="relative"
+        height="100vh"
+        _after={after}
+      >
+        <Container zIndex="2" centerContent justifyContent="center">
+          <Text color="white" fontSize="sm">
+            {show.tagline}
+          </Text>
+          <Image
+            src={show?.logo?.url}
+            alt={show?.logo?.alt}
+            w={show?.logo?.dimensions?.width}
+            h={show?.logo?.dimensions?.height}
+          />
+          <Image
+            src={show?.broadcast?.url}
+            alt={show?.broadcast?.alt}
+            w={show?.broadcast?.dimensions?.width}
+            h={show?.broadcast?.dimensions?.height}
+          />
+        </Container>
+        <VideoBg source={show?.video?.url} width="100%" height="100vh" />
       </Box>
       <Box flex={1} bg="black">
         hello
@@ -47,8 +51,10 @@ export default function IndexPage({ allEvents }) {
 }
 
 export async function getStaticProps({ preview = false, previewData }) {
-  //const allPosts = await getAllPosts(previewData);
+  const show = await getShowByUid('product-meetup', 'en-us', previewData);
   return {
-    props: {},
+    props: {
+      show,
+    },
   };
 }
