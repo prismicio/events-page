@@ -2,28 +2,27 @@ import VideoBg from '@/modules/pages/show/video-bg';
 import { Flex, Box, Image, Text, Container, Center } from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
 
-const after = {
-  content: '""',
-  position: 'absolute',
-  bgGradient: ['linear(to-r, transparent 10%,  black 100%)'],
-  top: '0',
-  left: '0',
-  right: '0',
-  bottom: '0',
+const leftSideStyles = {
+  display: 'flex',
+  flex: 1,
+  position: 'relative',
+  height: '100vh',
+  _after: {
+    content: '""',
+    position: 'absolute',
+    bgGradient: ['linear(to-r, transparent 10%,  black 100%)'],
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+  },
 };
 
 export default function IndexPage({ show }) {
   console.log(show);
   return (
     <Flex wrap="wrap">
-      <Box
-        display="flex"
-        flex={1}
-        bg="red.600"
-        position="relative"
-        height="100vh"
-        _after={after}
-      >
+      <Box {...leftSideStyles}>
         <Container zIndex="2" centerContent justifyContent="center">
           <Text color="white" fontSize="sm">
             {show.tagline}
@@ -41,7 +40,7 @@ export default function IndexPage({ show }) {
             h={show?.broadcast?.dimensions?.height}
           />
         </Container>
-        <VideoBg source={show?.video?.url} width="100%" height="100vh" />
+        <VideoBg source={show?.video?.url} />
       </Box>
       <Box flex={1} bg="black">
         hello
