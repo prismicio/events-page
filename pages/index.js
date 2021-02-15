@@ -30,14 +30,14 @@ export default function IndexPage({ show }) {
           <Image
             src={show?.logo?.url}
             alt={show?.logo?.alt}
-            w={show?.logo?.dimensions?.width}
-            h={show?.logo?.dimensions?.height}
+            width={show?.logo?.dimensions?.width}
+            height={show?.logo?.dimensions?.height}
           />
           <Image
             src={show?.broadcast?.url}
             alt={show?.broadcast?.alt}
-            w={show?.broadcast?.dimensions?.width}
-            h={show?.broadcast?.dimensions?.height}
+            width={show?.broadcast?.dimensions?.width}
+            height={show?.broadcast?.dimensions?.height}
           />
         </Container>
         <VideoBg source={show?.video?.url} />
