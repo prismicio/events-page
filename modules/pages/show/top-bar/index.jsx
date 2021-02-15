@@ -5,7 +5,7 @@ import htmlSerializer from '@/modules/commons/serializer';
 
 const Topbar = ({ heading, icon }) => {
   return (
-    <Box mb={4}>
+    <Box>
       <Flex justify="space-between" pb={4}>
         <RichText render={heading} htmlSerializer={htmlSerializer} />
         <Image
@@ -17,7 +17,7 @@ const Topbar = ({ heading, icon }) => {
           h={`${icon?.dimensions?.height}px`}
         />
       </Flex>
-      <Divider />
+      <Divider variant="dashed" />
     </Box>
   );
 };

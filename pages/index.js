@@ -4,14 +4,18 @@ import { Flex, Box, Image, Text, Container, Center } from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
 
 const leftSideStyles = {
-  display: 'flex',
-  flex: 1,
+  display: 'inline-flex',
+  flexGrow: 1,
   position: 'relative',
-  height: ['30vh', '30vh', '100vh'],
+  height: ['40vh', '40vh', '100vh'],
   _after: {
     content: '""',
     position: 'absolute',
-    bgGradient: ['linear(to-r, transparent 10%,  black 100%)'],
+    bgGradient: [
+      'linear(to-r, transparent 10%,  black 100%)',
+      'linear(to-b, transparent 10%,  black 100%)',
+      'linear(to-r, transparent 10%,  black 100%)',
+    ],
     top: '0',
     left: '0',
     right: '0',
@@ -39,9 +43,8 @@ const SliceZone = ({ slices }) => {
 };
 
 export default function IndexPage({ show }) {
-  console.log(show);
   return (
-    <Flex>
+    <Flex flexDirection={['column', 'column', 'row']}>
       <Box {...leftSideStyles}>
         <Container zIndex="2" centerContent justifyContent="center">
           <Text variant="tagline" fontSize="sm">
@@ -69,7 +72,7 @@ export default function IndexPage({ show }) {
         </Container>
         <VideoBg source={show?.video?.url} />
       </Box>
-      <Box flex={1} bg="black">
+      <Box flexGrow={1} bg="black">
         <Container maxW="full">
           <SliceZone slices={show?.body} />
         </Container>
