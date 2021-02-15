@@ -1,0 +1,28 @@
+{
+  "name": "Events",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "post-update": "yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "1.1.2",
+    "@emotion/react": "11.1.4",
+    "@emotion/styled": "11.0.0",
+    "framer-motion": "3.1.4",
+    "next": "latest",
+    "prismic-javascript": "^3.0.2",
+    "prismic-reactjs": "^1.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-imgix": "^9.0.3",
+    "uuid": "^8.3.2"
+  },
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "description": "Prismic events page"
+}
