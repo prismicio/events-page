@@ -24,10 +24,11 @@ export default function IndexPage({ show }) {
     <Flex wrap="wrap">
       <Box {...leftSideStyles}>
         <Container zIndex="2" centerContent justifyContent="center">
-          <Text color="white" fontSize="sm">
+          <Text variant="tagline" fontSize="sm">
             {show.tagline}
           </Text>
           <Image
+            my={8}
             fallbackSrc="./no-signal.jpg"
             src={show?.logo?.url}
             alt={show?.logo?.alt}

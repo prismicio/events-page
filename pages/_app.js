@@ -19,34 +19,18 @@ const customTheme = {
       600: 'pink',
     },
   },
+  letterSpacings: {
+    large: '0.15em',
+    largest: '0.3em',
+  },
   components: {
-    Container: {
-      sizes: {
-        default: {
-          maxWidth: '1280px',
-        },
-      },
+    Text: {
       variants: {
-        'dev-mode': {},
-      },
-    },
-    Link: {
-      sizes: {
-        large: {
-          p: '4',
-        },
-      },
-      variants: {
-        amz: {
-          w: '100%',
-          textAlign: 'center',
-          display: 'inline-block',
-          bg: 'yellow.400',
-          borderRadius: '4px',
-          _hover: {
-            bg: 'yellow.500',
-            textDecoration: 'none',
-          },
+        tagline: {
+          color: 'white',
+          fontWeight: 'bold',
+          letterSpacing: 'largest',
+          opacity: '70%',
         },
       },
     },
