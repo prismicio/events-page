@@ -28,16 +28,22 @@ export default function IndexPage({ show }) {
             {show.tagline}
           </Text>
           <Image
+            fallbackSrc="./no-signal.jpg"
             src={show?.logo?.url}
             alt={show?.logo?.alt}
             htmlWidth={`${show?.logo?.dimensions?.width}px`}
             htmlHeight={`${show?.logo?.dimensions?.height}px`}
+            w={`${show?.logo?.dimensions?.width}px`}
+            h={`${show?.logo?.dimensions?.height}px`}
           />
           <Image
+            fallbackSrc="./no-signal.jpg"
             src={show?.broadcast?.url}
             alt={show?.broadcast?.alt}
             htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
             htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
+            w={`${show?.broadcast?.dimensions?.width}px`}
+            h={`${show?.broadcast?.dimensions?.height}px`}
           />
         </Container>
         <VideoBg source={show?.video?.url} />
