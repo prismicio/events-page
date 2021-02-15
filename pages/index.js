@@ -19,7 +19,7 @@ const leftSideStyles = {
 };
 
 export default function IndexPage({ show }) {
-  console.log(show);
+  console.log(show?.broadcast?.dimensions?.width);
   return (
     <Flex wrap="wrap">
       <Box {...leftSideStyles}>
@@ -30,14 +30,14 @@ export default function IndexPage({ show }) {
           <Image
             src={show?.logo?.url}
             alt={show?.logo?.alt}
-            width={show?.logo?.dimensions?.width}
-            height={show?.logo?.dimensions?.height}
+            htmlWidth={`${show?.logo?.dimensions?.width}px`}
+            htmlHeight={`${show?.logo?.dimensions?.height}px`}
           />
           <Image
             src={show?.broadcast?.url}
             alt={show?.broadcast?.alt}
-            width={show?.broadcast?.dimensions?.width}
-            height={show?.broadcast?.dimensions?.height}
+            htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
+            htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
           />
         </Container>
         <VideoBg source={show?.video?.url} />
