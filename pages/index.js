@@ -71,14 +71,14 @@ const SliceZone = ({ slices }) => {
   });
 };
 
-const Header = ({ label, name }) => {
+const Header = ({ label, name, logo }) => {
   return (
     <Box mt={24} alignItems="center" justifyContent="space-between">
       <Text variant="label">{label}</Text>
       <Heading mt={1} as="h1" color="white" fontSize={['5xl', null, '6xl']}>
         {RichText.asText(name)}
       </Heading>
-      <RegisterModal />
+      <RegisterModal logo={logo} />
     </Box>
   );
 };
@@ -119,7 +119,7 @@ export default function IndexPage({ show }) {
           height={[null, null, '100vh']}
           maxW="full"
         >
-          <Header label={show?.label} name={show?.name} />
+          <Header label={show?.label} name={show?.name} logo={show?.logo} />
           <SliceZone slices={show?.body} />
         </Container>
       </Box>
