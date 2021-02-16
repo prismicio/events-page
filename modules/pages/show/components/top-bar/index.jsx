@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Image, Divider, Box } from '@chakra-ui/react';
+import { Flex, Image, Divider, Box, Heading } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 
@@ -7,7 +7,14 @@ const Topbar = ({ heading, icon }) => {
   return (
     <Box>
       <Flex justify="space-between" pb={4}>
-        <RichText render={heading} htmlSerializer={htmlSerializer} />
+        <Heading
+          letterSpacing="widest"
+          textTransform="uppercase"
+          fontSize="sm"
+          color="white"
+        >
+          {RichText.asText(heading)}
+        </Heading>
         <Image
           src={icon?.url}
           alt={icon?.alt}

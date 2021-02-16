@@ -11,7 +11,7 @@ const About = ({ description, features }) => {
       <Text mt={16} color="white" fontSize="3xl">
         {RichText.asText(description)}
       </Text>
-      <SimpleGrid mt={8} columns={[1, 1, 2]} spacing={4}>
+      <SimpleGrid mt={8} columns={[1, 1, 2]} spacing={8}>
         {features &&
           features.map((feature, index) => (
             <Feature
