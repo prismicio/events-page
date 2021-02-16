@@ -1,19 +1,23 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import Imgix from 'react-imgix';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 
 const Feature = ({ picture, title, description }) => {
   return (
-    <Box mb="4">
+    <Box>
       <Imgix
         width={picture?.dimensions?.width}
         height={picture?.dimensions?.height}
         src={picture?.url}
       />
-      <RichText render={title} htmlSerializer={htmlSerializer} />
-      <RichText render={description} htmlSerializer={htmlSerializer} />
+      <Box mt={8}>
+        <RichText render={title} htmlSerializer={htmlSerializer} />
+        <Text mt={4} color="white" fontSize="md">
+          {RichText.asText(description)}
+        </Text>
+      </Box>
     </Box>
   );
 };

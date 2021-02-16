@@ -10,6 +10,7 @@ const customTheme = {
   styles: {
     global: {
       'html, body': {
+        scrollBehavior: 'smooth',
         overflow: 'hidden',
       },
     },

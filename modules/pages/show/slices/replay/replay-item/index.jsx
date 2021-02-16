@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Flex, AspectRatio } from '@chakra-ui/react';
+import { Box, Text, Flex } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 import Imgix from 'react-imgix';
@@ -15,7 +15,9 @@ const ReplayItem = ({ replay }) => {
       />
       <Box>
         <RichText render={replay.title} htmlSerializer={htmlSerializer} />
-        <RichText render={replay.description} htmlSerializer={htmlSerializer} />
+        <Text color="white" fontSize="md">
+          {RichText.asText(replay?.description)}
+        </Text>
         <Text mt={4} variant="date">
           {replay.number}
         </Text>

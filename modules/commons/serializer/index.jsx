@@ -27,7 +27,7 @@ export default function htmlSerializer(type, element, content, children, key) {
       return (
         <Heading
           key={uuidv4()}
-          fontWeight="light"
+          fontWeight="medium"
           color="white"
           size="lg"
           as="h3"
