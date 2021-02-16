@@ -1,9 +1,11 @@
-import { Text, Link } from "@chakra-ui/react";
+import { Image } from '@chakra-ui/react';
 
-export default function Logo({ src }) {
+export default function Logo() {
   return (
-    <Text fontWeight="bold" fontSize="3xl">
-      {src}
-    </Text>
+    <Image
+      margin={['auto', null, 'inherit']}
+      width="90px"
+      src="/prismic-logo.svg"
+    />
   );
 }
