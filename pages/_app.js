@@ -11,7 +11,7 @@ const customTheme = {
     global: {
       'html, body': {
         scrollBehavior: 'smooth',
-        overflow: 'hidden',
+        overflow: ['scroll', null, 'hidden'],
       },
     },
   },
