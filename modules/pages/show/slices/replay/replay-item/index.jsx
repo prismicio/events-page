@@ -16,6 +16,8 @@ const ReplayItem = ({ replay }) => {
       <Box>
         <Text
           fontWeight="bold"
+          letterSpacing="widest"
+          fontSize="sm"
           color="white"
         >{`EPISODE ${replay.number}`}</Text>
         <Heading mt="4" fontWeight="normal" color="white" size="lg" as="h3">
