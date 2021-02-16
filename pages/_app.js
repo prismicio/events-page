@@ -42,10 +42,6 @@ const customTheme = {
       },
     },
   },
-  fonts: {
-    heading: 'Inter',
-    body: 'Inter',
-  },
   colors: {
     black: '#0C0C0C',
     brand: {
