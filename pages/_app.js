@@ -7,6 +7,13 @@ import {
 import Layout from '@/modules/layout';
 
 const customTheme = {
+  styles: {
+    global: {
+      'html, body': {
+        overflow: 'hidden',
+      },
+    },
+  },
   colors: {
     black: '#0C0C0C',
     brand: {

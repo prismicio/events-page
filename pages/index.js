@@ -110,7 +110,7 @@ export default function IndexPage({ show }) {
         <VideoBg source={show?.video?.url} />
       </Box>
       <Box flex={50} bg="black">
-        <Container maxW="full">
+        <Container overflow="scroll" height="100vh" maxW="full">
           <Header logo={show?.logo?.header} />
           <SliceZone slices={show?.body} />
         </Container>
