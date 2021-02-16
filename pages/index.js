@@ -124,7 +124,7 @@ export default function IndexPage({ show }) {
       </Box>
       <Box flex={50} bg="black">
         <Container
-          overflow={['hidden', null, 'scroll']}
+          overflowY={['hidden', null, 'scroll']}
           height={[null, null, '100vh']}
           maxW="full"
         >
