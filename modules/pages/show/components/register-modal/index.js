@@ -48,8 +48,8 @@ function RegisterModal({ logo }) {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader color="white">Yolo</ModalHeader>
+        <ModalContent bg="black">
+          <ModalHeader color="black">Yolo</ModalHeader>
           <ModalCloseButton color="white" />
           <Container p={12} centerContent bg="black">
             <Image
@@ -66,9 +66,9 @@ function RegisterModal({ logo }) {
           <ModalBody pb={6}>
             <form onSubmit={onSubmit} id="register">
               <FormControl isRequired>
-                <FormLabel color="black">Email</FormLabel>
+                <FormLabel color="white">Email</FormLabel>
                 <Input
-                  color="black"
+                  color="white"
                   ref={initialRef}
                   type="email"
                   placeholder="test@test.com"
