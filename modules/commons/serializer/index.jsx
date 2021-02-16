@@ -64,7 +64,7 @@ export default function htmlSerializer(type, element, content, children, key) {
       );
     case Elements.paragraph:
       return (
-        <Text key={uuidv4()} fontSize="lg" mb="4">
+        <Text key={uuidv4()} color="white" fontSize="3xl" mb="4">
           {children}
         </Text>
       );

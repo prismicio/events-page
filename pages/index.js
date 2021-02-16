@@ -1,12 +1,13 @@
-import UpcomingList from '@/modules/pages/show/upcoming';
-import VideoBg from '@/modules/pages/show/video-bg';
+import UpcomingList from '@/modules/pages/show/slices/upcoming';
+import VideoBg from '@/modules/pages/show/components/video-bg';
 import { Flex, Box, Image, Text, Container, Button } from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
+import About from '@/modules/pages/show/slices/about';
 
 const leftSideStyles = {
   display: 'inline-flex',
-  flexGrow: 1,
   position: 'relative',
+  flex: 50,
   height: ['60vh', '60vh', '100vh'],
   _after: {
     content: '""',
@@ -36,6 +37,14 @@ const SliceZone = ({ slices }) => {
             events={slice.fields}
           />
         );
+      case 'about':
+        return (
+          <About
+            key={`${slice.type}-${index}`}
+            description={slice.primary.description}
+            features={slice.fields}
+          />
+        );
       default:
         return null;
     }
@@ -55,9 +64,7 @@ const Header = ({ logo }) => {
         w={`${logo?.dimensions?.width}px`}
         h={`${logo?.dimensions?.height}px`}
       />
-      <Button height={50} w={340} colorScheme="brand">
-        Add on the calendar
-      </Button>
+      <Button colorScheme="brand">Add on the calendar</Button>
     </Flex>
   );
 };
@@ -92,7 +99,7 @@ export default function IndexPage({ show }) {
         </Container>
         <VideoBg source={show?.video?.url} />
       </Box>
-      <Box flexGrow={1} bg="black">
+      <Box flex={50} bg="black">
         <Container maxW="full">
           <Header logo={show?.logo?.header} />
           <SliceZone slices={show?.body} />

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Divider, Text, VStack } from '@chakra-ui/react';
-import Topbar from '@/modules/pages/show/top-bar';
+import Topbar from '@/modules/pages/show/components/top-bar';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 
 const UpcomingItem = ({ event }) => {
   return (
-    <Box mb="10">
+    <Box mb="4">
       <RichText render={event.title} htmlSerializer={htmlSerializer} />
       <Text mt={4} variant="date">
         {event.date}
