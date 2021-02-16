@@ -3,6 +3,7 @@ import VideoBg from '@/modules/pages/show/components/video-bg';
 import { Flex, Box, Image, Text, Container, Button } from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
 import About from '@/modules/pages/show/slices/about';
+import ReplayList from '@/modules/pages/show/slices/replay';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -35,6 +36,15 @@ const SliceZone = ({ slices }) => {
             topBarIcon={slice.primary.top_bar_icon}
             eventIcon={slice.primary.event_icon}
             events={slice.fields}
+          />
+        );
+      case 'replay':
+        return (
+          <ReplayList
+            key={`${slice.type}-${index}`}
+            heading={slice.primary.heading}
+            topBarIcon={slice.primary.top_bar_icon}
+            replays={slice.fields}
           />
         );
       case 'about':
