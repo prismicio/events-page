@@ -79,6 +79,7 @@ const customTheme = {
           color: 'white',
           fontSize: 'md',
           fontWeight: 'bold',
+          textTransform: 'uppercase',
         },
       },
     },

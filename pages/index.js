@@ -13,6 +13,7 @@ import { getShowByUid } from 'lib/prismic';
 import About from '@/modules/pages/show/slices/about';
 import ReplayList from '@/modules/pages/show/slices/replay';
 import { RichText } from 'prismic-reactjs';
+import RegisterModal from '@/modules/pages/show/components/register-modal';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -77,9 +78,7 @@ const Header = ({ label, name }) => {
       <Heading mt={1} as="h1" color="white" fontSize={['5xl', null, '6xl']}>
         {RichText.asText(name)}
       </Heading>
-      <Button isFullWidth mt={4} size="lg" colorScheme="brand">
-        Add on the calendar
-      </Button>
+      <RegisterModal />
     </Box>
   );
 };
