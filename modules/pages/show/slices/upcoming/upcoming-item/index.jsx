@@ -7,10 +7,8 @@ const UpcomingItem = ({ event, icon }) => {
   return (
     <Box mb="4">
       <RichText render={event.title} htmlSerializer={htmlSerializer} />
-      <Flex justifyContent="space-between" alignItems="baseline">
-        <Text mt={4} variant="date">
-          {event.date}
-        </Text>
+      <Flex mt={4} justifyContent="space-between" alignItems="center">
+        <Text variant="date">{event.date}</Text>
         <Image
           src={icon?.url}
           alt={icon?.alt}

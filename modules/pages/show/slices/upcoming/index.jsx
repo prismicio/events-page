@@ -5,7 +5,7 @@ import UpcomingItem from './upcoming-item';
 
 const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
   return (
-    <Box mt={20}>
+    <Box mt={24}>
       <Topbar heading={heading} icon={topBarIcon} />
       <VStack
         py={8}

@@ -1,9 +1,18 @@
 import UpcomingList from '@/modules/pages/show/slices/upcoming';
 import VideoBg from '@/modules/pages/show/components/video-bg';
-import { Flex, Box, Image, Text, Container, Button } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  Container,
+  Button,
+  Heading,
+} from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
 import About from '@/modules/pages/show/slices/about';
 import ReplayList from '@/modules/pages/show/slices/replay';
+import { RichText } from 'prismic-reactjs';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -16,7 +25,7 @@ const leftSideStyles = {
     bgGradient: [
       'linear(to-r, transparent 10%,  black 100%)',
       'linear(to-b, transparent 10%,  black 100%)',
-      'linear(to-r, transparent 10%,  black 100%)',
+      'linear(to-r, transparent 10%,  black 85%, black 100%)',
     ],
     top: '0',
     left: '0',
@@ -61,21 +70,25 @@ const SliceZone = ({ slices }) => {
   });
 };
 
-const Header = ({ logo }) => {
+const Header = ({ label, name }) => {
   return (
-    <Flex alignItems="center" justifyContent="space-between">
-      <Image
-        my={8}
-        fallbackSrc="./no-signal.jpg"
-        src={logo?.url}
-        alt={logo?.alt}
-        htmlWidth={`${logo?.dimensions?.width}px`}
-        htmlHeight={`${logo?.dimensions?.height}px`}
-        w={`${logo?.dimensions?.width}px`}
-        h={`${logo?.dimensions?.height}px`}
-      />
-      <Button colorScheme="brand">Add on the calendar</Button>
-    </Flex>
+    <Box mt={24} alignItems="center" justifyContent="space-between">
+      <Text
+        letterSpacing="widest"
+        textTransform="uppercase"
+        fontSize="sm"
+        color="white"
+        fontWeight="bold"
+      >
+        {label}
+      </Text>
+      <Heading mt={1} as="h1" color="white" fontSize={['5xl', null, '6xl']}>
+        {RichText.asText(name)}
+      </Heading>
+      <Button isFullWidth mt={4} size="lg" colorScheme="brand">
+        Add on the calendar
+      </Button>
+    </Box>
   );
 };
 
@@ -115,7 +128,7 @@ export default function IndexPage({ show }) {
           height={[null, null, '100vh']}
           maxW="full"
         >
-          <Header logo={show?.logo?.header} />
+          <Header label={show?.label} name={show?.name} />
           <SliceZone slices={show?.body} />
         </Container>
       </Box>
