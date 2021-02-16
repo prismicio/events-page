@@ -3,7 +3,7 @@ import mailchimp from '@mailchimp/mailchimp_marketing';
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '1mb',
+      sizeLimit: '0.5mb',
     },
   },
 };
