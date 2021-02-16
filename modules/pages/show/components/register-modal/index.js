@@ -22,7 +22,9 @@ function RegisterModal() {
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button mt={4} onClick={onOpen}>
+        Open Modal
+      </Button>
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
