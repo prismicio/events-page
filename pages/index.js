@@ -73,15 +73,7 @@ const SliceZone = ({ slices }) => {
 const Header = ({ label, name }) => {
   return (
     <Box mt={24} alignItems="center" justifyContent="space-between">
-      <Text
-        letterSpacing="widest"
-        textTransform="uppercase"
-        fontSize="sm"
-        color="white"
-        fontWeight="bold"
-      >
-        {label}
-      </Text>
+      <Text variant="label">{label}</Text>
       <Heading mt={1} as="h1" color="white" fontSize={['5xl', null, '6xl']}>
         {RichText.asText(name)}
       </Heading>

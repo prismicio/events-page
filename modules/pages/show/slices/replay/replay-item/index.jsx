@@ -1,32 +1,30 @@
 import React from 'react';
-import { Box, Text, Flex, SimpleGrid, Heading } from '@chakra-ui/react';
+import { Box, Text, Flex, SimpleGrid, Heading, Link } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 import Imgix from 'react-imgix';
 
 const ReplayItem = ({ replay }) => {
+  console.log(replay?.link.url);
   return (
-    <SimpleGrid columns="2" spacing="8">
-      <Imgix
-        src={replay?.thumbnail?.url}
-        alt={replay?.thumbnail?.alt}
-        width={replay?.thumbnail?.dimensions?.width}
-        height={replay?.thumbnail?.dimensions?.height}
-      />
-      <Box>
-        <Text
-          fontWeight="bold"
-          letterSpacing="widest"
-          fontSize="sm"
-          color="white"
-        >{`EPISODE ${replay.number}`}</Text>
+    <SimpleGrid columns={[1, 1, 2]} spacing="8">
+      <Link href={replay?.link.url} isExternal>
+        <Imgix
+          src={replay?.thumbnail?.url}
+          alt={replay?.thumbnail?.alt}
+          width={replay?.thumbnail?.dimensions?.width}
+          height={replay?.thumbnail?.dimensions?.height}
+        />
+      </Link>
+      <Link href={replay?.link.url} isExternal>
+        <Text variant="label">{`EPISODE ${replay.number}`}</Text>
         <Heading mt="4" fontWeight="normal" color="white" size="lg" as="h3">
           {RichText.asText(replay.title)}
         </Heading>
         <Text mt="4" color="white" fontSize="md">
           {RichText.asText(replay?.description)}
         </Text>
-      </Box>
+      </Link>
     </SimpleGrid>
   );
 };

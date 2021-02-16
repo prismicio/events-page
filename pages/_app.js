@@ -68,6 +68,13 @@ const customTheme = {
           letterSpacing: 'largest',
           opacity: '70%',
         },
+        label: {
+          fontWeight: 'bold',
+          letterSpacing: 'widest',
+          textTransform: 'uppercase',
+          fontSize: 'sm',
+          color: 'white',
+        },
         date: {
           color: 'white',
           fontSize: 'md',
