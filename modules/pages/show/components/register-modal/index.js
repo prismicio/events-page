@@ -15,20 +15,21 @@ import {
   Image,
   Box,
   Container,
+  Text,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 function RegisterModal({ logo }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState('');
-  const [isRegistered, setRegister] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setRegister(true);
     }, 5000);
     console.log(email);
   };
@@ -39,7 +40,7 @@ function RegisterModal({ logo }) {
   return (
     <Fragment>
       <Button mt={4} onClick={onOpen}>
-        Open Modal
+        Add on calendar
       </Button>
       <Modal
         initialFocusRef={initialRef}
@@ -48,10 +49,9 @@ function RegisterModal({ logo }) {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent bg="black">
-          <ModalHeader color="black">Yolo</ModalHeader>
+        <ModalContent>
           <ModalCloseButton color="white" />
-          <Container p={12} centerContent bg="black">
+          <Container p="12" centerContent bg="black">
             <Image
               my={8}
               fallbackSrc="./no-signal.jpg"
@@ -59,36 +59,43 @@ function RegisterModal({ logo }) {
               alt={logo?.alt}
               htmlWidth={`${logo?.dimensions?.width}px`}
               htmlHeight={`${logo?.dimensions?.height}px`}
-              w={`${logo?.dimensions?.width}` / 2}
+              w={`${logo?.dimensions?.width}` / 3}
               h={`${logo?.dimensions?.height}`}
             />
+            <Text fontWeight="bold" fontSize="2xl" color="white">
+              Don't miss the next one
+            </Text>
+            <Text mt="1" textAlign="center" color="white">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </Text>
           </Container>
-          <ModalBody pb={6}>
+          <ModalBody bg="brand.500" pt={8} pb={2}>
             <form onSubmit={onSubmit} id="register">
               <FormControl isRequired>
-                <FormLabel color="white">Email</FormLabel>
                 <Input
+                  sx={{ '::placeholder': { color: 'white' } }}
+                  focusBorderColor="white"
                   color="white"
                   ref={initialRef}
                   type="email"
                   placeholder="test@test.com"
                   size="lg"
+                  variant="flushed"
                   onChange={(event) => setEmail(event.currentTarget.value)}
                 />
               </FormControl>
             </form>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter bg="brand.500">
             <Button
+              isFullWidth
               isLoading={loading}
               form="register"
               type="submit"
-              colorScheme="brand"
-              mr={3}
             >
               Save
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
