@@ -1,18 +1,17 @@
 import React from 'react';
-import { Box, Text, Image, Flex } from '@chakra-ui/react';
+import { Box, Text, Flex, AspectRatio } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
+import Imgix from 'react-imgix';
 
 const ReplayItem = ({ replay }) => {
   return (
     <Flex wrap="wrap">
-      <Image
+      <Imgix
         src={replay?.thumbnail?.url}
         alt={replay?.thumbnail?.alt}
-        htmlWidth={`${replay?.thumbnail?.dimensions?.width}px`}
-        htmlHeight={`${replay?.thumbnail?.dimensions?.height}px`}
-        w={`${replay?.thumbnail?.dimensions?.width}px`}
-        h={`${replay?.thumbnail?.dimensions?.height}px`}
+        width={replay?.thumbnail?.dimensions?.width}
+        height={replay?.thumbnail?.dimensions?.height}
       />
       <Box>
         <RichText render={replay.title} htmlSerializer={htmlSerializer} />
