@@ -28,10 +28,20 @@ function RegisterModal({ logo }) {
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/mailchimp', {
+        method: 'POST',
+        body: JSON.stringify({
+          listId: 'c5bc39a77f',
+          email: email,
+        }),
+      });
+      console.log(res.json());
       setLoading(false);
-    }, 5000);
-    console.log(email);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
   };
 
   const initialRef = React.useRef();
@@ -39,7 +49,7 @@ function RegisterModal({ logo }) {
 
   return (
     <Fragment>
-      <Button mt={4} onClick={onOpen}>
+      <Button colorScheme="brand" mt={4} onClick={onOpen}>
         Add on calendar
       </Button>
       <Modal
