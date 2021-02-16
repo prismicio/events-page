@@ -10,10 +10,7 @@ const customTheme = {
   colors: {
     black: '#0C0C0C',
     brand: {
-      900: 'blue',
-      800: 'red',
-      700: 'yellow',
-      600: 'pink',
+      500: '#6E52FF',
     },
   },
   letterSpacings: {

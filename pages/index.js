@@ -1,6 +1,6 @@
 import UpcomingList from '@/modules/pages/show/upcoming';
 import VideoBg from '@/modules/pages/show/video-bg';
-import { Flex, Box, Image, Text, Container, Center } from '@chakra-ui/react';
+import { Flex, Box, Image, Text, Container, Button } from '@chakra-ui/react';
 import { getShowByUid } from 'lib/prismic';
 
 const leftSideStyles = {
@@ -42,6 +42,26 @@ const SliceZone = ({ slices }) => {
   });
 };
 
+const Header = ({ logo }) => {
+  return (
+    <Flex alignItems="center" justifyContent="space-between">
+      <Image
+        my={8}
+        fallbackSrc="./no-signal.jpg"
+        src={logo?.url}
+        alt={logo?.alt}
+        htmlWidth={`${logo?.dimensions?.width}px`}
+        htmlHeight={`${logo?.dimensions?.height}px`}
+        w={`${logo?.dimensions?.width}px`}
+        h={`${logo?.dimensions?.height}px`}
+      />
+      <Button height={50} w={340} colorScheme="brand">
+        Add on the calendar
+      </Button>
+    </Flex>
+  );
+};
+
 export default function IndexPage({ show }) {
   return (
     <Flex flexDirection={['column', 'column', 'row']}>
@@ -74,6 +94,7 @@ export default function IndexPage({ show }) {
       </Box>
       <Box flexGrow={1} bg="black">
         <Container maxW="full">
+          <Header logo={show?.logo?.header} />
           <SliceZone slices={show?.body} />
         </Container>
       </Box>
