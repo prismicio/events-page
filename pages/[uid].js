@@ -8,6 +8,7 @@ import { RichText } from 'prismic-reactjs';
 import RegisterModal from '@/modules/pages/show/components/register-modal';
 import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
+import queryString from 'querystring';
 import { useRouter } from 'next/router';
 
 const leftSideStyles = {
@@ -83,6 +84,7 @@ export default function IndexPage({ show }) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
   return (
     <PrismicContext.Provider value={[show]}>
       <Layout>
@@ -145,7 +147,6 @@ export async function getStaticPaths(context) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  console.log(params);
   const show = await getShowByUid(params.uid, 'en-us', previewData);
   return {
     props: {

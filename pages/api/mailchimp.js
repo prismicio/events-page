@@ -14,11 +14,15 @@ mailchimp.setConfig({
 });
 
 export default async function addMember(req, res) {
-  const { listId, email } = JSON.parse(req.body);
+  const { listId, email, firstName, lastName } = JSON.parse(req.body);
   try {
     const response = await mailchimp.lists.addListMember(listId, {
       email_address: email,
       status: 'subscribed',
+      merge_fields: {
+        FNAME: firstName,
+        LNAME: lastName,
+      },
     });
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');

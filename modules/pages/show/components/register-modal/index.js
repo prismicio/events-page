@@ -1,14 +1,12 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import {
   Button,
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   FormControl,
-  FormLabel,
   Input,
   ModalFooter,
   useDisclosure,
@@ -19,13 +17,24 @@ import {
 } from '@chakra-ui/react';
 import { PrismicContext } from '@/contexts/index';
 import { RichText } from 'prismic-reactjs';
+import { useRouter } from 'next/router';
 
 function RegisterModal() {
+  const router = useRouter();
+  const query = router.query;
   const [show] = useContext(PrismicContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setEmail] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [loading, setLoading] = useState('');
   const [hasRegister, setRegister] = useState(false);
+
+  useEffect(() => {
+    if (query.email) setEmail(query.email);
+    if (query.lastname) setLastName(query.lastname);
+    if (query.firstname) setFirstName(query.firstname);
+  }, [query]);
 
   const CALENDAR_CID = `https://calendar.google.com/calendar/u/1?cid=${show?.calendar_cid}`;
 
@@ -36,6 +45,8 @@ function RegisterModal() {
       const res = await fetch('/api/mailchimp', {
         method: 'POST',
         body: JSON.stringify({
+          lastName,
+          firstName,
           email,
           listId: show.mailchimp_list_id,
         }),
@@ -101,6 +112,7 @@ function RegisterModal() {
                     focusBorderColor="white"
                     color="white"
                     ref={initialRef}
+                    defaultValue={query.email || ''}
                     type="email"
                     placeholder={show?.email_placeholder}
                     size="lg"
