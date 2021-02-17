@@ -1,7 +1,5 @@
 import useWindowSize from '@/hooks/useWindowSize';
 import { Box, Container, Flex, Link as CustomLink } from '@chakra-ui/react';
-import Navigation from '@/modules/layout/navigation/desktop';
-import MobileNavigation from '@/modules/layout/navigation/mobile';
 import Logo from '@/modules/layout/logo';
 import Link from 'next/link';
 

@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react';
 import { Fragment } from 'react';
 import Header from './header';
 

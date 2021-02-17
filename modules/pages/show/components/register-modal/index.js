@@ -17,26 +17,8 @@ import {
   Container,
   Text,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
 import { PrismicContext } from '@/contexts/index';
 import { RichText } from 'prismic-reactjs';
-
-/**
- * try {
-      const res = await fetch('/api/mailchimp', {
-        method: 'POST',
-        body: JSON.stringify({
-          listId: 'c5bc39a77f',
-          email: email,
-        }),
-      });
-      console.log(res.json());
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      console.log(err);
-    }
- */
 
 function RegisterModal() {
   const [show] = useContext(PrismicContext);
@@ -50,10 +32,20 @@ function RegisterModal() {
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/mailchimp', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          listId: show.mailchimp_list_id,
+        }),
+      });
       setRegister(true);
       setLoading(false);
-    }, 2000);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
   };
 
   const initialRef = React.useRef();

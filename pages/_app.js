@@ -4,7 +4,6 @@ import {
   GlobalStyle,
   CSSReset,
 } from '@chakra-ui/react';
-import Layout from '@/modules/layout';
 
 const customTheme = {
   styles: {
@@ -67,9 +66,7 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <CSSReset />
       <GlobalStyle />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </ChakraProvider>
   );
 }
