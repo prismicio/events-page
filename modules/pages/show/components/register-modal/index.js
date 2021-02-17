@@ -19,16 +19,8 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-function RegisterModal({ logo }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState('');
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    try {
+/**
+ * try {
       const res = await fetch('/api/mailchimp', {
         method: 'POST',
         body: JSON.stringify({
@@ -42,6 +34,32 @@ function RegisterModal({ logo }) {
       setLoading(false);
       console.log(err);
     }
+ */
+
+function RegisterModal({ logo }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState('');
+  const [hasRegister, setRegister] = useState(false);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setRegister(true);
+      setLoading(false);
+    }, 2000);
+  };
+
+  const mock = {
+    before: {
+      title: 'Donne ton mail',
+      description: 'blablablablablalbla',
+    },
+    after: {
+      title: `Merci ${email}`,
+      description: 'Add the calenddar',
+    },
   };
 
   const initialRef = React.useRef();
@@ -73,39 +91,56 @@ function RegisterModal({ logo }) {
               h={`${logo?.dimensions?.height}`}
             />
             <Text fontWeight="bold" fontSize="2xl" color="white">
-              Don't miss the next one
+              {!hasRegister ? mock.before.title : mock.after.title}
             </Text>
             <Text mt="1" textAlign="center" color="white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod.
+              {!hasRegister ? mock.before.description : mock.after.description}
             </Text>
           </Container>
-          <ModalBody bg="brand.500" pt={8} pb={2}>
-            <form onSubmit={onSubmit} id="register">
-              <FormControl isRequired>
-                <Input
-                  sx={{ '::placeholder': { color: 'white' } }}
-                  focusBorderColor="white"
-                  color="white"
-                  ref={initialRef}
-                  type="email"
-                  placeholder="test@test.com"
-                  size="lg"
-                  variant="flushed"
-                  onChange={(event) => setEmail(event.currentTarget.value)}
-                />
-              </FormControl>
-            </form>
+          <ModalBody bg="brand.500" py={0} px={8}>
+            {!hasRegister ? (
+              <form onSubmit={onSubmit} id="register">
+                <FormControl isRequired>
+                  <Input
+                    sx={{ '::placeholder': { color: 'white' } }}
+                    focusBorderColor="white"
+                    color="white"
+                    ref={initialRef}
+                    type="email"
+                    placeholder="test@test.com"
+                    size="lg"
+                    variant="flushed"
+                    onChange={(event) => setEmail(event.currentTarget.value)}
+                  />
+                </FormControl>
+              </form>
+            ) : null}
           </ModalBody>
           <ModalFooter bg="brand.500">
-            <Button
-              isFullWidth
-              isLoading={loading}
-              form="register"
-              type="submit"
-            >
-              Save
-            </Button>
+            {!hasRegister ? (
+              <Button
+                size="lg"
+                isFullWidth
+                isLoading={loading}
+                form="register"
+                type="submit"
+              >
+                Save
+              </Button>
+            ) : (
+              <Button
+                href="https://calendar.google.com/calendar/u/1?cid=Y181am03djNvc2tiNjd1NTE3cHJvMGE0dTEwY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+                as="a"
+                target="_blank"
+                size="lg"
+                isFullWidth
+                isLoading={loading}
+                form="register"
+                type="submit"
+              >
+                Click là pour ajouter le calendar
+              </Button>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>
