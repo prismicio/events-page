@@ -8,6 +8,7 @@ import { RichText } from 'prismic-reactjs';
 import RegisterModal from '@/modules/pages/show/components/register-modal';
 import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
+import { useRouter } from 'next/router';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -78,6 +79,10 @@ const Header = ({ label, name, logo }) => {
 };
 
 export default function IndexPage({ show }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <PrismicContext.Provider value={[show]}>
       <Layout>
