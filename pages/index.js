@@ -14,6 +14,7 @@ import About from '@/modules/pages/show/slices/about';
 import ReplayList from '@/modules/pages/show/slices/replay';
 import { RichText } from 'prismic-reactjs';
 import RegisterModal from '@/modules/pages/show/components/register-modal';
+import { PrismicContext } from 'contexts';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -85,45 +86,47 @@ const Header = ({ label, name, logo }) => {
 
 export default function IndexPage({ show }) {
   return (
-    <Flex flexDirection={['column', 'column', 'row']}>
-      <Box {...leftSideStyles}>
-        <Container zIndex="2" centerContent justifyContent="center">
-          <Text variant="tagline" fontSize="sm">
-            {show.tagline}
-          </Text>
-          <Image
-            my={8}
-            fallbackSrc="./no-signal.jpg"
-            src={show?.logo?.url}
-            alt={show?.logo?.alt}
-            htmlWidth={`${show?.logo?.dimensions?.width}px`}
-            htmlHeight={`${show?.logo?.dimensions?.height}px`}
-            w={`${show?.logo?.dimensions?.width}px`}
-            h={`${show?.logo?.dimensions?.height}px`}
-          />
-          <Image
-            fallbackSrc="./no-signal.jpg"
-            src={show?.broadcast?.url}
-            alt={show?.broadcast?.alt}
-            htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
-            htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
-            w={`${show?.broadcast?.dimensions?.width}px`}
-            h={`${show?.broadcast?.dimensions?.height}px`}
-          />
-        </Container>
-        <VideoBg source={show?.video?.url} />
-      </Box>
-      <Box flex={50} bg="black">
-        <Container
-          overflowY={['hidden', null, 'scroll']}
-          height={[null, null, '100vh']}
-          maxW="full"
-        >
-          <Header label={show?.label} name={show?.name} logo={show?.logo} />
-          <SliceZone slices={show?.body} />
-        </Container>
-      </Box>
-    </Flex>
+    <PrismicContext.Provider value={[show]}>
+      <Flex flexDirection={['column', 'column', 'row']}>
+        <Box {...leftSideStyles}>
+          <Container zIndex="2" centerContent justifyContent="center">
+            <Text variant="tagline" fontSize="sm">
+              {show.tagline}
+            </Text>
+            <Image
+              my={8}
+              fallbackSrc="./no-signal.jpg"
+              src={show?.logo?.url}
+              alt={show?.logo?.alt}
+              htmlWidth={`${show?.logo?.dimensions?.width}px`}
+              htmlHeight={`${show?.logo?.dimensions?.height}px`}
+              w={`${show?.logo?.dimensions?.width}px`}
+              h={`${show?.logo?.dimensions?.height}px`}
+            />
+            <Image
+              fallbackSrc="./no-signal.jpg"
+              src={show?.broadcast?.url}
+              alt={show?.broadcast?.alt}
+              htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
+              htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
+              w={`${show?.broadcast?.dimensions?.width}px`}
+              h={`${show?.broadcast?.dimensions?.height}px`}
+            />
+          </Container>
+          <VideoBg source={show?.video?.url} />
+        </Box>
+        <Box flex={50} bg="black">
+          <Container
+            overflowY={['hidden', null, 'scroll']}
+            height={[null, null, '100vh']}
+            maxW="full"
+          >
+            <Header label={show?.label} name={show?.name} logo={show?.logo} />
+            <SliceZone slices={show?.body} />
+          </Container>
+        </Box>
+      </Flex>
+    </PrismicContext.Provider>
   );
 }
 

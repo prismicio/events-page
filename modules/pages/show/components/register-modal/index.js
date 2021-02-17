@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import {
   Button,
   Modal,
@@ -18,6 +18,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { PrismicContext } from '@/contexts/index';
+import { RichText } from 'prismic-reactjs';
 
 /**
  * try {
@@ -36,11 +38,14 @@ import { useRouter } from 'next/router';
     }
  */
 
-function RegisterModal({ logo }) {
+function RegisterModal() {
+  const [show] = useContext(PrismicContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState('');
   const [hasRegister, setRegister] = useState(false);
+
+  const CALENDAR_CID = `https://calendar.google.com/calendar/u/1?cid=${show?.calendar_cid}`;
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -51,24 +56,15 @@ function RegisterModal({ logo }) {
     }, 2000);
   };
 
-  const mock = {
-    before: {
-      title: 'Donne ton mail',
-      description: 'blablablablablalbla',
-    },
-    after: {
-      title: `Merci ${email}`,
-      description: 'Add the calenddar',
-    },
-  };
-
   const initialRef = React.useRef();
   const finalRef = React.useRef();
+
+  console.log('the context', show);
 
   return (
     <Fragment>
       <Button colorScheme="brand" mt={4} onClick={onOpen}>
-        Add on calendar
+        {show?.button}
       </Button>
       <Modal
         initialFocusRef={initialRef}
@@ -82,19 +78,27 @@ function RegisterModal({ logo }) {
           <Container p="12" centerContent bg="black">
             <Image
               my={8}
-              fallbackSrc="./no-signal.jpg"
-              src={logo?.url}
-              alt={logo?.alt}
-              htmlWidth={`${logo?.dimensions?.width}px`}
-              htmlHeight={`${logo?.dimensions?.height}px`}
-              w={`${logo?.dimensions?.width}` / 3}
-              h={`${logo?.dimensions?.height}`}
+              src={show?.logo?.url}
+              alt={show?.logo?.alt}
+              htmlWidth={`${show?.logo?.dimensions?.width}px`}
+              htmlHeight={`${show?.logo?.dimensions?.height}px`}
+              w={`${show?.logo?.dimensions?.width}` / 3}
+              h={`${show?.logo?.dimensions?.height}`}
             />
-            <Text fontWeight="bold" fontSize="2xl" color="white">
-              {!hasRegister ? mock.before.title : mock.after.title}
+            <Text
+              textAlign="center"
+              fontWeight="bold"
+              fontSize="1xl"
+              color="white"
+            >
+              {!hasRegister
+                ? RichText.asText(show?.title_before)
+                : RichText.asText(show?.title_after)}
             </Text>
             <Text mt="1" textAlign="center" color="white">
-              {!hasRegister ? mock.before.description : mock.after.description}
+              {!hasRegister
+                ? RichText.asText(show?.description_before)
+                : RichText.asText(show?.description_after)}
             </Text>
           </Container>
           {!hasRegister ? (
@@ -102,12 +106,12 @@ function RegisterModal({ logo }) {
               <form onSubmit={onSubmit} id="register">
                 <FormControl isRequired>
                   <Input
-                    sx={{ '::placeholder': { color: 'white' } }}
+                    sx={{ '::placeholder': { color: 'white', opacity: '.7' } }}
                     focusBorderColor="white"
                     color="white"
                     ref={initialRef}
                     type="email"
-                    placeholder="test@test.com"
+                    placeholder={show?.email_placeholder}
                     size="lg"
                     variant="flushed"
                     onChange={(event) => setEmail(event.currentTarget.value)}
@@ -126,11 +130,11 @@ function RegisterModal({ logo }) {
                 form="register"
                 type="submit"
               >
-                Save
+                {show?.button_for_register}
               </Button>
             ) : (
               <Button
-                href="https://calendar.google.com/calendar/u/1?cid=Y181am03djNvc2tiNjd1NTE3cHJvMGE0dTEwY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+                href={CALENDAR_CID}
                 as="a"
                 target="_blank"
                 size="lg"
@@ -139,7 +143,7 @@ function RegisterModal({ logo }) {
                 form="register"
                 type="submit"
               >
-                Click là pour ajouter le calendar
+                {show?.button_for_calendar}
               </Button>
             )}
           </ModalFooter>

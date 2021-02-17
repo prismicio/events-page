@@ -54,7 +54,8 @@
           ["@/lib/*", "./lib/"],
           ["@/theme/*", "./theme"],
           ["@/utils/*", "./utils/"],
-          ["@/mocks/*", "./mocks/"]
+          ["@/mocks/*", "./mocks/"],
+          ["@/contexts/*", "./contexts/"]
         ],
         "extensions": [".js", ".jsx", ".json"]
       }
