@@ -97,8 +97,8 @@ function RegisterModal({ logo }) {
               {!hasRegister ? mock.before.description : mock.after.description}
             </Text>
           </Container>
-          <ModalBody bg="brand.500" py={0} px={8}>
-            {!hasRegister ? (
+          {!hasRegister ? (
+            <ModalBody bg="brand.500" py={4} px={8}>
               <form onSubmit={onSubmit} id="register">
                 <FormControl isRequired>
                   <Input
@@ -114,8 +114,9 @@ function RegisterModal({ logo }) {
                   />
                 </FormControl>
               </form>
-            ) : null}
-          </ModalBody>
+            </ModalBody>
+          ) : null}
+
           <ModalFooter bg="brand.500">
             {!hasRegister ? (
               <Button
