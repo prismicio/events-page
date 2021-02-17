@@ -114,6 +114,9 @@ export default function IndexPage({ show }) {
               overflowY={['hidden', null, 'scroll']}
               height={[null, null, '100vh']}
               maxW="full"
+              paddingRight={['8', null, '20']}
+              paddingLeft={['8', null, '0']}
+              paddingBottom="8"
             >
               <Header label={show?.label} name={show?.name} logo={show?.logo} />
               <SliceZone slices={show?.body} />

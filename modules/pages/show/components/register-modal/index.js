@@ -55,26 +55,27 @@ function RegisterModal() {
 
   return (
     <Fragment>
-      <Button colorScheme="brand" mt={4} onClick={onOpen}>
+      <Button height="52px" colorScheme="brand" mt={4} onClick={onOpen}>
         {show?.button}
       </Button>
       <Modal
+        isCentered
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
       >
-        <ModalOverlay />
+        <ModalOverlay sx={{ backdropFilter: 'blur(6px)' }} />
         <ModalContent>
-          <ModalCloseButton color="white" />
-          <Container p="12" centerContent bg="black">
+          <ModalCloseButton px="4" color="white" />
+          <Container pt="12" pb="4" px="12" centerContent bg="black">
             <Image
               my={8}
               src={show?.logo?.url}
               alt={show?.logo?.alt}
               htmlWidth={`${show?.logo?.dimensions?.width}px`}
               htmlHeight={`${show?.logo?.dimensions?.height}px`}
-              w={`${show?.logo?.dimensions?.width}` / 3}
+              w={`${show?.logo?.dimensions?.width}` / 2}
               h={`${show?.logo?.dimensions?.height}`}
             />
             <Text
@@ -94,7 +95,7 @@ function RegisterModal() {
             </Text>
           </Container>
           {!hasRegister ? (
-            <ModalBody bg="brand.500" py={4} px={8}>
+            <ModalBody bg="black" py={4} px="12">
               <form onSubmit={onSubmit} id="register">
                 <FormControl isRequired>
                   <Input
@@ -113,10 +114,12 @@ function RegisterModal() {
             </ModalBody>
           ) : null}
 
-          <ModalFooter bg="brand.500">
+          <ModalFooter pb="16" px="12" bg="black">
             {!hasRegister ? (
               <Button
+                colorScheme="brand"
                 size="lg"
+                height="52px"
                 isFullWidth
                 isLoading={loading}
                 form="register"
@@ -126,6 +129,7 @@ function RegisterModal() {
               </Button>
             ) : (
               <Button
+                colorScheme="brand"
                 href={CALENDAR_CID}
                 as="a"
                 target="_blank"

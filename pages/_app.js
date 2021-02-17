@@ -9,6 +9,7 @@ const customTheme = {
   styles: {
     global: {
       'html, body': {
+        background: 'black',
         scrollBehavior: 'smooth',
         overflow: ['scroll', null, 'hidden'],
       },
