@@ -85,7 +85,7 @@ export default function IndexPage({ show }) {
           <Box {...leftSideStyles}>
             <Container zIndex="2" centerContent justifyContent="center">
               <Text variant="tagline" fontSize="sm">
-                {show.tagline}
+                {show?.tagline}
               </Text>
               <Image
                 my={8}
