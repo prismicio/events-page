@@ -7,12 +7,7 @@ const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
   return (
     <Box mt={24}>
       <Topbar heading={heading} icon={topBarIcon} />
-      <VStack
-        py={8}
-        spacing={4}
-        align="space-between"
-        //divider={<Divider opacity="10%" />}
-      >
+      <VStack py={8} spacing={4} align="space-between">
         {events.length > 0 ? (
           events.map((event, index) => (
             <UpcomingItem

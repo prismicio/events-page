@@ -4,9 +4,8 @@ import { RichText } from 'prismic-reactjs';
 import Feature from './feature-item';
 
 const About = ({ description, features }) => {
-  console.log(description);
   return (
-    <Box mt={16}>
+    <Box mt={4}>
       <Divider opacity="0.1" />
       <Text mt={16} color="white" fontSize="3xl">
         {RichText.asText(description)}

@@ -5,7 +5,6 @@ import htmlSerializer from '@/modules/commons/serializer';
 import Imgix from 'react-imgix';
 
 const ReplayItem = ({ replay }) => {
-  console.log(replay?.link.url);
   return (
     <SimpleGrid columns={[1, 1, 2]} spacing="8">
       <Link href={replay?.link.url} isExternal>

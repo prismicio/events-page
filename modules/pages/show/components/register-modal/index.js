@@ -51,8 +51,6 @@ function RegisterModal() {
   const initialRef = React.useRef();
   const finalRef = React.useRef();
 
-  console.log('the context', show);
-
   return (
     <Fragment>
       <Button height="52px" colorScheme="brand" mt={4} onClick={onOpen}>
@@ -99,7 +97,7 @@ function RegisterModal() {
               <form onSubmit={onSubmit} id="register">
                 <FormControl isRequired>
                   <Input
-                    sx={{ '::placeholder': { color: 'white', opacity: '.7' } }}
+                    sx={{ '::placeholder': { color: 'white', opacity: '.3' } }}
                     focusBorderColor="white"
                     color="white"
                     ref={initialRef}
