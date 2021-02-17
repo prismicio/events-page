@@ -89,7 +89,6 @@ export default function IndexPage({ show }) {
               </Text>
               <Image
                 my={8}
-                fallbackSrc="./no-signal.jpg"
                 src={show?.logo?.url}
                 alt={show?.logo?.alt}
                 htmlWidth={`${show?.logo?.dimensions?.width}px`}
@@ -98,7 +97,6 @@ export default function IndexPage({ show }) {
                 h={`${show?.logo?.dimensions?.height}px`}
               />
               <Image
-                fallbackSrc="./no-signal.jpg"
                 src={show?.broadcast?.url}
                 alt={show?.broadcast?.alt}
                 htmlWidth={`${show?.broadcast?.dimensions?.width}px`}

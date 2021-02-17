@@ -9,9 +9,9 @@ const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
       <Topbar heading={heading} icon={topBarIcon} />
       <VStack
         py={8}
-        spacing={8}
+        spacing={4}
         align="space-between"
-        divider={<Divider opacity="10%" />}
+        //divider={<Divider opacity="10%" />}
       >
         {events.length > 0 ? (
           events.map((event, index) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Image, Flex } from '@chakra-ui/react';
+import { Box, Text, Image, Flex, Heading } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
@@ -7,11 +7,13 @@ import htmlSerializer from '@/modules/commons/serializer';
 const UpcomingItem = ({ event, icon }) => {
   const eventDate = format(new Date(event.date), 'dd MMMM yyyy HH:mm');
   return (
-    <Box mb="4">
-      <RichText render={event.title} htmlSerializer={htmlSerializer} />
-      <Flex mt={4} justifyContent="space-between" alignItems="center">
-        <Text variant="date">{eventDate}</Text>
+    <Box borderRadius="0.375em" bg="#101010" p="8" mb="4">
+      <Heading color="white" fontSize="xl" as="h3">
+        {RichText.asText(event.title)}
+      </Heading>
+      <Flex mt={4} alignItems="center">
         <Image
+          mr={4}
           src={icon?.url}
           alt={icon?.alt}
           htmlWidth={`${icon?.dimensions?.width}px`}
@@ -19,6 +21,7 @@ const UpcomingItem = ({ event, icon }) => {
           w={`${icon?.dimensions?.width}px`}
           h={`${icon?.dimensions?.height}px`}
         />
+        <Text variant="date">{eventDate}</Text>
       </Flex>
     </Box>
   );
