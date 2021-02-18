@@ -4,8 +4,10 @@ export default function Logo() {
   return (
     <Image
       margin={['auto', null, 'inherit']}
-      width="90px"
-      height="100%"
+      w="90px"
+      h="100%"
+      htmlWidth="90px"
+      htmlHeight="100%"
       src="/prismic-logo.svg"
     />
   );
