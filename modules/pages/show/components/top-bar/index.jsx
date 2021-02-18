@@ -6,7 +6,7 @@ import htmlSerializer from '@/modules/commons/serializer';
 const Topbar = ({ heading, icon }) => {
   return (
     <Box>
-      <Flex justify="space-between">
+      <Flex alignItems="center" justify="space-between">
         <Heading
           letterSpacing="widest"
           textTransform="uppercase"
@@ -24,7 +24,7 @@ const Topbar = ({ heading, icon }) => {
           h={`${icon?.dimensions?.height}px`}
         />
       </Flex>
-      <Divider pt={8} variant="dashed" />
+      <Divider opacity="0.2" pt={8} variant="dashed" />
     </Box>
   );
 };

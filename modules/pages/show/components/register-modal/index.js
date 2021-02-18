@@ -81,7 +81,7 @@ function RegisterModal() {
         onClose={onClose}
       >
         <ModalOverlay sx={{ backdropFilter: 'blur(6px)' }} />
-        <ModalContent>
+        <ModalContent borderRadius="md" overflow="hidden">
           <ModalCloseButton px="4" color="white" />
           <Container pt="12" pb="4" px="12" centerContent bg="black">
             <Image
