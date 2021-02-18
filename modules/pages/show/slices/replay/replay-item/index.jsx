@@ -3,10 +3,10 @@ import { Box, Text, SimpleGrid, Link } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 import Imgix from 'react-imgix';
-import { format } from 'date-fns';
+//import { format } from 'date-fns';
 
 const ReplayItem = ({ replay }) => {
-  const eventDate = format(new Date(replay?.epdate), 'MMMM yyyy');
+  //const eventDate = format(new Date(replay?.epdate), 'MMMM yyyy');
   return (
     <SimpleGrid
       _hover={{ opacity: '1' }}
@@ -31,7 +31,7 @@ const ReplayItem = ({ replay }) => {
         href={replay?.link.url}
         isExternal
       >
-        <Text variant="label">{`EPISODE ${replay?.number} • ${eventDate}`}</Text>
+        <Text variant="label">{`EPISODE ${replay?.number} • ${replay?.epdate}`}</Text>
         <Box mt="4">
           <RichText render={replay.title} htmlSerializer={htmlSerializer} />
           <Text mt="4" color="white" fontSize="md">
