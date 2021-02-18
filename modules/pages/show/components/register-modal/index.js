@@ -70,7 +70,6 @@ function RegisterModal() {
         width={['100%', null, 'inherit']}
         height="52px"
         colorScheme="brand"
-        aria-label="open modal"
         mt={4}
         onClick={onOpen}
       >
@@ -89,13 +88,14 @@ function RegisterModal() {
           <ModalCloseButton px="4" color="white" />
           <Container pt="12" pb="4" px="12" centerContent bg="black">
             <Image
+              ignoreFallback={true}
               my={8}
               src={show?.logo?.url}
               alt={show?.logo?.alt || 'Product Meeetup'}
               htmlWidth={show?.logo?.dimensions?.width}
               htmlHeight={show?.logo?.dimensions?.height}
-              w={show?.logo?.dimensions?.width / 2}
-              h={show?.logo?.dimensions?.height}
+              w={`${show?.logo?.dimensions?.width}` / 2}
+              h={`${show?.logo?.dimensions?.height}`}
             />
             <Text
               textAlign="center"
@@ -121,7 +121,6 @@ function RegisterModal() {
                     sx={{ '::placeholder': { color: 'white', opacity: '.3' } }}
                     focusBorderColor="white"
                     color="white"
-                    aria-label="email"
                     ref={initialRef}
                     defaultValue={query.email || ''}
                     type="email"
@@ -140,7 +139,6 @@ function RegisterModal() {
               <Button
                 colorScheme="brand"
                 size="lg"
-                aria-label="submit"
                 height="52px"
                 isFullWidth
                 isLoading={loading}
@@ -156,7 +154,6 @@ function RegisterModal() {
                 as="a"
                 target="_blank"
                 size="lg"
-                aria-label="submit"
                 isFullWidth
                 isLoading={loading}
                 form="register"
