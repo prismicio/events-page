@@ -50,7 +50,7 @@ const customTheme = {
         },
         date: {
           color: 'white',
-          fontSize: 'md',
+          fontSize: 'sm',
           fontWeight: 'bold',
           textTransform: 'uppercase',
         },
