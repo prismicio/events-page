@@ -14,10 +14,12 @@ import {
   Box,
   Container,
   Text,
+  arrow,
 } from '@chakra-ui/react';
 import { PrismicContext } from '@/contexts/index';
 import { RichText } from 'prismic-reactjs';
 import { useRouter } from 'next/router';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 function RegisterModal() {
   const router = useRouter();
@@ -72,6 +74,7 @@ function RegisterModal() {
         onClick={onOpen}
       >
         {show?.button}
+        <ArrowForwardIcon ml="2" w="5" h="5" />
       </Button>
       <Modal
         isCentered
