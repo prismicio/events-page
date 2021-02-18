@@ -4,10 +4,10 @@ import { format } from 'date-fns';
 import { RichText } from 'prismic-reactjs';
 
 const UpcomingItem = ({ event, icon }) => {
-  const eventDate = format(new Date(event.date), 'dd MMMM yyyy HH:mm');
+  const eventDate = format(new Date(event?.date), 'dd MMMM yyyy HH:mm');
   return (
     <Box borderRadius="0.375em" bg="#111111" p={['6', null, '12']}>
-      <Badge variant="episode">EPISODE X</Badge>
+      <Badge variant="episode">{`EPISODE ${event?.episode_number}`}</Badge>
       <Heading
         isTruncated
         mt="6"
@@ -15,7 +15,7 @@ const UpcomingItem = ({ event, icon }) => {
         fontSize={['2xl', null, '3xl']}
         as="h3"
       >
-        {RichText.asText(event.title)}
+        {RichText.asText(event?.title)}
       </Heading>
       <Flex mt={4} alignItems="center">
         <Image
