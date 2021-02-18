@@ -16,16 +16,15 @@ import { RichText } from 'prismic-reactjs';
 import RegisterModal from '@/modules/pages/show/components/register-modal';
 import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
-import queryString from 'querystring';
 import { useRouter } from 'next/router';
 
 const leftSideStyles = {
   display: 'inline-flex',
-  position: 'relative',
-  flex: 50,
+  position: ['relative', null, 'fixed'],
+  width: ['100%', null, '50%'],
   height: ['60vh', '60vh', '100vh'],
   _after: {
-    zIndex: 4,
+    zIndex: 0,
     content: '""',
     position: 'absolute',
     bgGradient: [
@@ -128,9 +127,10 @@ export default function IndexPage({ show }) {
             </Container>
             <VideoBg source={show?.video?.url} />
           </Box>
-          <Box flex={50} bg="black">
+          <Box bg="black" width={['100%', null, '50%']} ml="auto">
             <Container
-              overflowY={['hidden', null, 'scroll']}
+              //overflowY={['hidden', null, 'scroll']}
+
               height={[null, null, '100vh']}
               maxW="full"
               paddingRight={['4', null, '20']}

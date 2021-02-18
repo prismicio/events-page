@@ -10,7 +10,7 @@ export default function Header() {
       zIndex="10"
       p="8"
       as="header"
-      position="absolute"
+      position={['absolute', null, 'fixed']}
       w="100%"
       left="0"
       top="0"
