@@ -10,7 +10,7 @@ const UpcomingItem = ({ event, icon }) => {
       <Badge variant="episode">EPISODE X</Badge>
       <Heading
         isTruncated
-        mt="4"
+        mt="6"
         color="white"
         fontSize={['2xl', null, '3xl']}
         as="h3"
