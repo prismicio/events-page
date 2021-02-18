@@ -8,15 +8,15 @@ import { format } from 'date-fns';
 const ReplayItem = ({ replay }) => {
   const eventDate = format(new Date(replay?.epdate), 'MMMM yyyy');
   return (
-    <SimpleGrid columns={[1, 1, 2]} spacing="8">
+    <SimpleGrid
+      _hover={{ opacity: '1' }}
+      transition="opacity 300ms"
+      opacity="0.7"
+      columns={[1, 1, 2]}
+      spacing="8"
+    >
       <Link href={replay?.link.url} isExternal>
-        <Box
-          _hover={{ opacity: '1' }}
-          transition="opacity 300ms"
-          opacity="0.7"
-          borderRadius="md"
-          overflow="hidden"
-        >
+        <Box borderRadius="md" overflow="hidden">
           <Imgix
             htmlAttributes={{ alt: replay?.alt || 'Product Meeetup Replay' }}
             src={replay?.thumbnail?.url}
