@@ -105,6 +105,7 @@ export default function IndexPage({ show }) {
                 {show?.tagline}
               </Text>
               <Image
+                ignoreFallback={true}
                 my={[1, null, 8]}
                 src={show?.logo?.url}
                 alt={show?.logo?.alt || 'Product Meeetup'}
@@ -117,6 +118,7 @@ export default function IndexPage({ show }) {
                 h={show?.logo?.dimensions?.height}
               />
               <Image
+                ignoreFallback={true}
                 src={show?.broadcast?.url}
                 alt={show?.broadcast?.alt || 'Product Meeetup'}
                 htmlWidth={show?.broadcast?.dimensions?.width}
