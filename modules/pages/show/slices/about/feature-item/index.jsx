@@ -7,12 +7,14 @@ import htmlSerializer from '@/modules/commons/serializer';
 const Feature = ({ picture, title, description }) => {
   return (
     <Box>
-      <Imgix
-        width={picture?.dimensions?.width}
-        height={picture?.dimensions?.height}
-        src={picture?.url}
-      />
-      <Box mt={4}>
+      <Box borderRadius="md" overflow="hidden">
+        <Imgix
+          width={picture?.dimensions?.width}
+          height={picture?.dimensions?.height}
+          src={picture?.url}
+        />
+      </Box>
+      <Box mt={6}>
         <RichText render={title} htmlSerializer={htmlSerializer} />
         <Text mt={4} color="white" fontSize="md" lineHeight="base">
           {RichText.asText(description)}
