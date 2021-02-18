@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/modules/*": ["modules/*"],
+      "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
       "@/theme/*": ["theme/*"],
       "@/contexts/*": ["contexts/*"]

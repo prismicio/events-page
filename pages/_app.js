@@ -4,6 +4,9 @@ import {
   GlobalStyle,
   CSSReset,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { pageview } from '@/lib/gtag';
+import { useEffect } from 'react';
 
 const customTheme = {
   styles: {
@@ -81,6 +84,17 @@ const customTheme = {
 const theme = extendTheme({ ...customTheme });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <ChakraProvider theme={theme}>
       <CSSReset />
