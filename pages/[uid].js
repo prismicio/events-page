@@ -125,12 +125,9 @@ export default function IndexPage({ show }) {
                 h={`${show?.broadcast?.dimensions?.height}px`}
               />
             </Container>
-            <VideoBg source={show?.video?.url} />
           </Box>
           <Box bg="black" width={['100%', null, '50%']} ml="auto">
             <Container
-              //overflowY={['hidden', null, 'scroll']}
-
               height={[null, null, '100vh']}
               maxW="full"
               paddingRight={['4', null, '20']}
