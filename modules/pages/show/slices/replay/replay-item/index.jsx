@@ -16,7 +16,13 @@ const ReplayItem = ({ replay }) => {
   return (
     <SimpleGrid columns={[1, 1, 2]} spacing="8">
       <Link href={replay?.link.url} isExternal>
-        <Box borderRadius="md" overflow="hidden">
+        <Box
+          _hover={{ opacity: '1' }}
+          transition="opacity 300ms"
+          opacity="0.7"
+          borderRadius="md"
+          overflow="hidden"
+        >
           <Imgix
             htmlAttributes={{ alt: replay?.alt || 'Product Meeetup Replay' }}
             src={replay?.thumbnail?.url}
