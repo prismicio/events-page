@@ -1,18 +1,12 @@
 import React from 'react';
-import {
-  Box,
-  Text,
-  Flex,
-  SimpleGrid,
-  Heading,
-  Link,
-  AspectRatio,
-} from '@chakra-ui/react';
+import { Box, Text, SimpleGrid, Link } from '@chakra-ui/react';
 import { RichText } from 'prismic-reactjs';
 import htmlSerializer from '@/modules/commons/serializer';
 import Imgix from 'react-imgix';
+import { format } from 'date-fns';
 
 const ReplayItem = ({ replay }) => {
+  const eventDate = format(new Date(replay?.epdate), 'MMMM yyyy');
   return (
     <SimpleGrid columns={[1, 1, 2]} spacing="8">
       <Link href={replay?.link.url} isExternal>
@@ -37,7 +31,7 @@ const ReplayItem = ({ replay }) => {
         href={replay?.link.url}
         isExternal
       >
-        <Text variant="label">{`EPISODE ${replay.number}`}</Text>
+        <Text variant="label">{`EPISODE ${replay?.number} • ${eventDate}`}</Text>
         <Box mt="4">
           <RichText render={replay.title} htmlSerializer={htmlSerializer} />
           <Text mt="4" color="white" fontSize="md">
