@@ -70,6 +70,7 @@ function RegisterModal() {
         width={['100%', null, 'inherit']}
         height="52px"
         colorScheme="brand"
+        aria-label="open modal"
         mt={4}
         onClick={onOpen}
       >
@@ -120,6 +121,7 @@ function RegisterModal() {
                     sx={{ '::placeholder': { color: 'white', opacity: '.3' } }}
                     focusBorderColor="white"
                     color="white"
+                    aria-label="email"
                     ref={initialRef}
                     defaultValue={query.email || ''}
                     type="email"
@@ -138,6 +140,7 @@ function RegisterModal() {
               <Button
                 colorScheme="brand"
                 size="lg"
+                aria-label="submit"
                 height="52px"
                 isFullWidth
                 isLoading={loading}
@@ -153,6 +156,7 @@ function RegisterModal() {
                 as="a"
                 target="_blank"
                 size="lg"
+                aria-label="submit"
                 isFullWidth
                 isLoading={loading}
                 form="register"
