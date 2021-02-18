@@ -17,11 +17,12 @@ const leftSideStyles = {
   flex: 50,
   height: ['60vh', '60vh', '100vh'],
   _after: {
+    zIndex: 4,
     content: '""',
     position: 'absolute',
     bgGradient: [
-      'linear(to-r, transparent 10%,  black 100%)',
       'linear(to-b, transparent 10%,  black 100%)',
+      'linear(to-b, transparent 10%,   black 100%)',
       'linear(to-r, transparent 10%,  black 85%, black 100%)',
     ],
     top: '0',
@@ -69,9 +70,9 @@ const SliceZone = ({ slices }) => {
 
 const Header = ({ label, name, logo }) => {
   return (
-    <Box mt={24} alignItems="center" justifyContent="space-between">
+    <Box mt={[8, null, 24]} alignItems="center" justifyContent="space-between">
       <Text variant="label">{label}</Text>
-      <Heading mt={1} as="h1" color="white" fontSize={['5xl', null, '6xl']}>
+      <Heading mt={1} as="h1" color="white" fontSize={['4xl', null, '6xl']}>
         {RichText.asText(name)}
       </Heading>
       <RegisterModal logo={logo} />
@@ -90,18 +91,21 @@ export default function IndexPage({ show }) {
       <Layout>
         <Flex flexDirection={['column', 'column', 'row']}>
           <Box {...leftSideStyles}>
-            <Container zIndex="2" centerContent justifyContent="center">
+            <Container zIndex="6" centerContent justifyContent="center">
               <Text variant="tagline" fontSize="sm">
                 {show?.tagline}
               </Text>
               <Image
-                my={8}
+                my={[1, null, 8]}
                 src={show?.logo?.url}
                 alt={show?.logo?.alt}
                 htmlWidth={`${show?.logo?.dimensions?.width}px`}
                 htmlHeight={`${show?.logo?.dimensions?.height}px`}
-                w={`${show?.logo?.dimensions?.width}px`}
-                h={`${show?.logo?.dimensions?.height}px`}
+                w={[
+                  show?.logo?.dimensions?.width / 1.5,
+                  show?.logo?.dimensions?.width,
+                ]}
+                h={show?.logo?.dimensions?.height}
               />
               <Image
                 src={show?.broadcast?.url}
@@ -119,8 +123,8 @@ export default function IndexPage({ show }) {
               overflowY={['hidden', null, 'scroll']}
               height={[null, null, '100vh']}
               maxW="full"
-              paddingRight={['8', null, '20']}
-              paddingLeft={['8', null, '0']}
+              paddingRight={['4', null, '20']}
+              paddingLeft={['4', null, '0']}
               paddingBottom="8"
             >
               <Header label={show?.label} name={show?.name} logo={show?.logo} />

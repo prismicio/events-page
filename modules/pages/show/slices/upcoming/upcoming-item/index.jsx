@@ -6,12 +6,12 @@ import { RichText } from 'prismic-reactjs';
 const UpcomingItem = ({ event, icon }) => {
   const eventDate = format(new Date(event.date), 'dd MMMM yyyy HH:mm');
   return (
-    <Box borderRadius="0.375em" bg="#101010" p="8">
+    <Box borderRadius="0.375em" bg="#141414" p={['6', null, '8']}>
       <Badge variant="solid" colorScheme="brand">
         {' '}
         EPISODE X{' '}
       </Badge>
-      <Heading mt="4" color="white" fontSize="xl" as="h3">
+      <Heading isTruncated mt="4" color="white" fontSize="xl" as="h3">
         {RichText.asText(event.title)}
       </Heading>
       <Flex mt={4} alignItems="center">
@@ -24,7 +24,9 @@ const UpcomingItem = ({ event, icon }) => {
           w={`${icon?.dimensions?.width}px`}
           h={`${icon?.dimensions?.height}px`}
         />
-        <Text variant="date">{eventDate}</Text>
+        <Text isTruncated variant="date">
+          {eventDate}
+        </Text>
       </Flex>
     </Box>
   );

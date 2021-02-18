@@ -5,7 +5,7 @@ import UpcomingItem from './upcoming-item';
 
 const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
   return (
-    <Box mt={24}>
+    <Box mt={[12, null, 24]}>
       <Topbar heading={heading} icon={topBarIcon} />
       <VStack py={8} spacing={4} align="space-between">
         {events.length > 0 ? (

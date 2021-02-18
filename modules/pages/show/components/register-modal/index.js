@@ -42,7 +42,7 @@ function RegisterModal() {
     event.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/mailchimp', {
+      await fetch('/api/mailchimp', {
         method: 'POST',
         body: JSON.stringify({
           lastName,
@@ -64,7 +64,13 @@ function RegisterModal() {
 
   return (
     <Fragment>
-      <Button height="52px" colorScheme="brand" mt={4} onClick={onOpen}>
+      <Button
+        width={['100%', null, 'inherit']}
+        height="52px"
+        colorScheme="brand"
+        mt={4}
+        onClick={onOpen}
+      >
         {show?.button}
       </Button>
       <Modal
