@@ -26,7 +26,11 @@ const ReplayItem = ({ replay }) => {
           />
         </Box>
       </Link>
-      <Link href={replay?.link.url} isExternal>
+      <Link
+        _hover={{ textDecoration: 'none' }}
+        href={replay?.link.url}
+        isExternal
+      >
         <Text variant="label">{`EPISODE ${replay.number}`}</Text>
         <Box mt="4">
           <RichText render={replay.title} htmlSerializer={htmlSerializer} />
