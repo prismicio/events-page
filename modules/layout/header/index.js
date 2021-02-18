@@ -16,7 +16,7 @@ export default function Header() {
       top="0"
     >
       <Box>
-        <Link passHref href="/">
+        <Link passHref href="https://prismic.io">
           <CustomLink>
             <Logo src={size.width} />
           </CustomLink>
