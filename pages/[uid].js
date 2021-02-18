@@ -70,12 +70,14 @@ const SliceZone = ({ slices }) => {
 
 const Header = ({ label, name, logo }) => {
   return (
-    <Box mt={[8, null, 24]} alignItems="center" justifyContent="space-between">
+    <Box mt={[8, null, 24]}>
       <Text variant="label">{label}</Text>
-      <Heading mt={1} as="h1" color="white" fontSize={['4xl', null, '6xl']}>
-        {RichText.asText(name)}
-      </Heading>
-      <RegisterModal logo={logo} />
+      <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
+        <Heading mt={1} as="h1" color="white" fontSize={['4xl', null, '6xl']}>
+          {RichText.asText(name)}
+        </Heading>
+        <RegisterModal logo={logo} />
+      </Flex>
     </Box>
   );
 };
