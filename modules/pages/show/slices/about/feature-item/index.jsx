@@ -16,7 +16,7 @@ const Feature = ({ picture, title, description }) => {
       </Box>
       <Box mt={6}>
         <RichText render={title} htmlSerializer={htmlSerializer} />
-        <Text mt={4} color="white" fontSize="md" lineHeight="base">
+        <Text mt={2} color="white" fontSize="md" lineHeight="base">
           {RichText.asText(description)}
         </Text>
       </Box>
