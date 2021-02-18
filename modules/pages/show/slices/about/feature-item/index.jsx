@@ -9,6 +9,7 @@ const Feature = ({ picture, title, description }) => {
     <Box>
       <Box borderRadius="md" overflow="hidden">
         <Imgix
+          htmlAttributes={{ alt: picture?.alt || 'Product Meeetup' }}
           width={picture?.dimensions?.width}
           height={picture?.dimensions?.height}
           src={picture?.url}

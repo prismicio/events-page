@@ -21,7 +21,7 @@ const UpcomingItem = ({ event, icon }) => {
         <Image
           mr={2}
           src={icon?.url}
-          alt={icon?.alt}
+          alt={icon?.alt || 'Product Meeetup'}
           htmlWidth={`${icon?.dimensions?.width}px`}
           htmlHeight={`${icon?.dimensions?.height}px`}
           w={`${icon?.dimensions?.width}px`}

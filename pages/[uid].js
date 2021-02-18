@@ -108,7 +108,7 @@ export default function IndexPage({ show }) {
               <Image
                 my={[1, null, 8]}
                 src={show?.logo?.url}
-                alt={show?.logo?.alt}
+                alt={show?.logo?.alt || 'Product Meeetup'}
                 htmlWidth={`${show?.logo?.dimensions?.width}px`}
                 htmlHeight={`${show?.logo?.dimensions?.height}px`}
                 w={[
@@ -119,7 +119,7 @@ export default function IndexPage({ show }) {
               />
               <Image
                 src={show?.broadcast?.url}
-                alt={show?.broadcast?.alt}
+                alt={show?.broadcast?.alt || 'Product Meeetup'}
                 htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
                 htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
                 w={`${show?.broadcast?.dimensions?.width}px`}

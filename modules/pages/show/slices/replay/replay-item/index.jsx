@@ -18,8 +18,9 @@ const ReplayItem = ({ replay }) => {
       <Link href={replay?.link.url} isExternal>
         <Box borderRadius="md" overflow="hidden">
           <Imgix
+            htmlAttributes={{ alt: replay?.alt || 'Product Meeetup Replay' }}
             src={replay?.thumbnail?.url}
-            alt={replay?.thumbnail?.alt}
+            alt={replay?.thumbnail?.alt || 'Product Meeetup'}
             width={replay?.thumbnail?.dimensions?.width}
             height={replay?.thumbnail?.dimensions?.height}
           />

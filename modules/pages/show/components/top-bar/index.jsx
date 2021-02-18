@@ -17,7 +17,7 @@ const Topbar = ({ heading, icon }) => {
         </Heading>
         <Image
           src={icon?.url}
-          alt={icon?.alt}
+          alt={icon?.alt || 'Product Meeetup'}
           htmlWidth={`${icon?.dimensions?.width}px`}
           htmlHeight={`${icon?.dimensions?.height}px`}
           w={`${icon?.dimensions?.width}px`}
