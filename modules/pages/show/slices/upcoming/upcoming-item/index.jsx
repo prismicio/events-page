@@ -8,7 +8,13 @@ const UpcomingItem = ({ event, icon }) => {
   return (
     <Box borderRadius="0.375em" bg="#111111" p={['6', null, '12']}>
       <Badge variant="episode">EPISODE X</Badge>
-      <Heading isTruncated mt="4" color="white" fontSize="3xl" as="h3">
+      <Heading
+        isTruncated
+        mt="4"
+        color="white"
+        fontSize={['2xl', null, '3xl']}
+        as="h3"
+      >
         {RichText.asText(event.title)}
       </Heading>
       <Flex mt={4} alignItems="center">
