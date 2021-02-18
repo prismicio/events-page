@@ -18,7 +18,12 @@ const customTheme = {
   colors: {
     black: '#0C0C0C',
     brand: {
+      100: '#E7DBFF',
+      400: '#BB99FF',
       500: '#6E52FF',
+      600: '#5F2AF3',
+      800: '#390ABD',
+      900: '#2C283F',
     },
   },
   letterSpacings: {
@@ -30,6 +35,19 @@ const customTheme = {
       sizes: {
         full: {
           width: '100%',
+        },
+      },
+    },
+    Badge: {
+      variants: {
+        episode: {
+          pt: '0.10em',
+          bg: 'brand.900',
+          borderColor: '#3C3369 !important',
+          color: 'brand.500',
+          fontWeight: 'bold',
+          border: '1px',
+          px: '0.5em',
         },
       },
     },
