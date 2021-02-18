@@ -1,6 +1,14 @@
 import UpcomingList from '@/modules/pages/show/slices/upcoming';
 import VideoBg from '@/modules/pages/show/components/video-bg';
-import { Flex, Box, Image, Text, Container, Heading } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  Container,
+  Heading,
+  Divider,
+} from '@chakra-ui/react';
 import { getAllShows, getShowByUid } from 'lib/prismic';
 import About from '@/modules/pages/show/slices/about';
 import ReplayList from '@/modules/pages/show/slices/replay';
