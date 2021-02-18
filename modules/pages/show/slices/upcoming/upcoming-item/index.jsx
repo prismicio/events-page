@@ -22,10 +22,10 @@ const UpcomingItem = ({ event, icon }) => {
           mr={2}
           src={icon?.url}
           alt={icon?.alt || 'Product Meeetup'}
-          htmlWidth={`${icon?.dimensions?.width}px`}
-          htmlHeight={`${icon?.dimensions?.height}px`}
-          w={`${icon?.dimensions?.width}px`}
-          h={`${icon?.dimensions?.height}px`}
+          htmlWidth={icon?.dimensions?.width}
+          htmlHeight={icon?.dimensions?.height}
+          w={icon?.dimensions?.width}
+          h={icon?.dimensions?.height}
         />
         <Text isTruncated variant="date">
           {eventDate}

@@ -91,10 +91,10 @@ function RegisterModal() {
               my={8}
               src={show?.logo?.url}
               alt={show?.logo?.alt || 'Product Meeetup'}
-              htmlWidth={`${show?.logo?.dimensions?.width}px`}
-              htmlHeight={`${show?.logo?.dimensions?.height}px`}
-              w={`${show?.logo?.dimensions?.width}` / 2}
-              h={`${show?.logo?.dimensions?.height}`}
+              htmlWidth={show?.logo?.dimensions?.width}
+              htmlHeight={show?.logo?.dimensions?.height}
+              w={show?.logo?.dimensions?.width / 2}
+              h={show?.logo?.dimensions?.height}
             />
             <Text
               textAlign="center"
