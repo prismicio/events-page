@@ -6,7 +6,9 @@ import { RichText } from 'prismic-reactjs';
 
 const UpcomingItem = ({ event, icon }) => {
   dayjs.extend(customParseFormat);
-  const parsedDate = dayjs(event?.date).format('ddd, MMM D, YYYY h:mm A');
+  const parsedDate = dayjs(event?.date, 'YYYY-MM-DDTHH:mm:ss.000ZZ').format(
+    'ddd, MMM D, YYYY h:mm A',
+  );
   return (
     <Box borderRadius="0.375em" bg="#111111" p={['6', null, '12']}>
       <Badge variant="episode">{`EPISODE ${event?.episode_number}`}</Badge>
