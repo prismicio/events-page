@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Text, Image, Flex, Heading, Badge } from '@chakra-ui/react';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { RichText } from 'prismic-reactjs';
 
 const UpcomingItem = ({ event, icon }) => {
-  const parsedDate = dayjs(event?.date, 'YYYY-MM-DD-HH-MM-SS').format(
-    'ddd, MMM D, YYYY h:mm A',
-  );
+  dayjs.extend(customParseFormat);
+  const parsedDate = dayjs(event?.date).format('ddd, MMM D, YYYY h:mm A');
   return (
     <Box borderRadius="0.375em" bg="#111111" p={['6', null, '12']}>
       <Badge variant="episode">{`EPISODE ${event?.episode_number}`}</Badge>
