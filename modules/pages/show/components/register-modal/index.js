@@ -11,10 +11,8 @@ import {
   ModalFooter,
   useDisclosure,
   Image,
-  Box,
   Container,
   Text,
-  arrow,
 } from '@chakra-ui/react';
 import { PrismicContext } from '@/contexts/index';
 import { RichText } from 'prismic-reactjs';

@@ -11,7 +11,7 @@ const ReplayItem = ({ replay }) => {
     <SimpleGrid
       _hover={{ opacity: '1' }}
       transition="opacity 300ms"
-      opacity="0.7"
+      opacity={['1', null, '0.7']}
       columns={[1, 1, 2]}
       spacing="8"
     >

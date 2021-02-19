@@ -14,7 +14,6 @@ const customTheme = {
       'html, body': {
         background: 'black',
         scrollBehavior: 'smooth',
-        //overflow: ['scroll', null, 'hidden'],
       },
     },
   },
