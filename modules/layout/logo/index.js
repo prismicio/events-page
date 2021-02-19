@@ -3,6 +3,7 @@ import { Image } from '@chakra-ui/react';
 export default function Logo() {
   return (
     <Image
+      ignoreFallback={true}
       alt="prismic.io"
       margin={['auto', null, 'inherit']}
       w="90px"

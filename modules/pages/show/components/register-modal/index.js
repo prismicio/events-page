@@ -88,6 +88,7 @@ function RegisterModal() {
           <ModalCloseButton px="4" color="white" />
           <Container pt="12" pb="4" px="12" centerContent bg="black">
             <Image
+              ignoreFallback={true}
               my={8}
               src={show?.logo?.url}
               alt={show?.logo?.alt || 'Product Meeetup'}

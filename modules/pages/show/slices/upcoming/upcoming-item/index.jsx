@@ -23,6 +23,7 @@ const UpcomingItem = ({ event, icon }) => {
       </Heading>
       <Flex mt={4} alignItems="center">
         <Image
+          ignoreFallback={true}
           mr={2}
           src={icon?.url}
           alt={icon?.alt || 'Product Meeetup'}

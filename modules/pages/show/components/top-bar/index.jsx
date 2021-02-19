@@ -16,6 +16,7 @@ const Topbar = ({ heading, icon }) => {
           {RichText.asText(heading)}
         </Heading>
         <Image
+          ignoreFallback={true}
           src={icon?.url}
           alt={icon?.alt || 'Product Meeetup'}
           htmlWidth={`${icon?.dimensions?.width}px`}
