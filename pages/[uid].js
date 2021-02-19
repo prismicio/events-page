@@ -118,6 +118,7 @@ export default function IndexPage({ show }) {
                 h={show?.logo?.dimensions?.height}
               />
               <Image
+                ignoreFallback={true}
                 src={show?.broadcast?.url}
                 alt={show?.broadcast?.alt || 'Product Meeetup'}
                 htmlWidth={show?.broadcast?.dimensions?.width}
