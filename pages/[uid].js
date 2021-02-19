@@ -105,11 +105,12 @@ export default function IndexPage({ show }) {
                 {show?.tagline}
               </Text>
               <Image
+                ignoreFallback={true}
                 my={[1, null, 8]}
                 src={show?.logo?.url}
                 alt={show?.logo?.alt || 'Product Meeetup'}
-                htmlWidth={`${show?.logo?.dimensions?.width}px`}
-                htmlHeight={`${show?.logo?.dimensions?.height}px`}
+                htmlWidth={show?.logo?.dimensions?.width}
+                htmlHeight={show?.logo?.dimensions?.height}
                 w={[
                   show?.logo?.dimensions?.width / 1.5,
                   show?.logo?.dimensions?.width,
@@ -119,12 +120,13 @@ export default function IndexPage({ show }) {
               <Image
                 src={show?.broadcast?.url}
                 alt={show?.broadcast?.alt || 'Product Meeetup'}
-                htmlWidth={`${show?.broadcast?.dimensions?.width}px`}
-                htmlHeight={`${show?.broadcast?.dimensions?.height}px`}
-                w={`${show?.broadcast?.dimensions?.width}px`}
-                h={`${show?.broadcast?.dimensions?.height}px`}
+                htmlWidth={show?.broadcast?.dimensions?.width}
+                htmlHeight={show?.broadcast?.dimensions?.height}
+                w={show?.broadcast?.dimensions?.width}
+                h={show?.broadcast?.dimensions?.height}
               />
             </Container>
+            <VideoBg source={show?.video?.url} />
           </Box>
           <Box bg="black" width={['100%', null, '50%']} ml="auto">
             <Container

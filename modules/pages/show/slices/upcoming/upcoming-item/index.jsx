@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Text, Image, Flex, Heading, Badge } from '@chakra-ui/react';
-//import { format } from 'date-fns';
+import dayjs from 'dayjs';
 import { RichText } from 'prismic-reactjs';
 
 const UpcomingItem = ({ event, icon }) => {
-  //const eventDate = format(new Date(event?.date), 'dd MMMM yyyy HH:mm');
+  const parsedDate = dayjs(event?.date).format('ddd, MMM D, YYYY h:mm A');
   return (
     <Box borderRadius="0.375em" bg="#111111" p={['6', null, '12']}>
       <Badge variant="episode">{`EPISODE ${event?.episode_number}`}</Badge>
@@ -28,7 +28,7 @@ const UpcomingItem = ({ event, icon }) => {
           h={`${icon?.dimensions?.height}px`}
         />
         <Text isTruncated variant="date">
-          {event?.date}
+          {parsedDate}
         </Text>
       </Flex>
     </Box>
