@@ -101,7 +101,11 @@ export default function IndexPage({ show }) {
         <Flex flexDirection={['column', 'column', 'row']}>
           <Box {...leftSideStyles}>
             <Container zIndex="6" centerContent justifyContent="center">
-              <Text variant="tagline" fontSize="sm">
+              <Text
+                mt={[24, null, 'inherit']}
+                variant="tagline"
+                fontSize={['xs', 'md', null]}
+              >
                 {show?.tagline}
               </Text>
               <Image

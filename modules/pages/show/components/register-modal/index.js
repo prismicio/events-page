@@ -11,10 +11,8 @@ import {
   ModalFooter,
   useDisclosure,
   Image,
-  Box,
   Container,
   Text,
-  arrow,
 } from '@chakra-ui/react';
 import { PrismicContext } from '@/contexts/index';
 import { RichText } from 'prismic-reactjs';
@@ -69,6 +67,7 @@ function RegisterModal() {
       <Button
         width={['100%', null, 'inherit']}
         height="52px"
+        aria-label="open register form"
         colorScheme="brand"
         mt={4}
         onClick={onOpen}
@@ -85,7 +84,11 @@ function RegisterModal() {
       >
         <ModalOverlay sx={{ backdropFilter: 'blur(6px)' }} />
         <ModalContent>
-          <ModalCloseButton px="4" color="white" />
+          <ModalCloseButton
+            aria-label="close register form"
+            px="4"
+            color="white"
+          />
           <Container pt="12" pb="4" px="12" centerContent bg="black">
             <Image
               ignoreFallback={true}
@@ -127,6 +130,7 @@ function RegisterModal() {
                     placeholder={show?.email_placeholder}
                     size="lg"
                     variant="flushed"
+                    aria-label="your email"
                     onChange={(event) => setEmail(event.currentTarget.value)}
                   />
                 </FormControl>
@@ -139,6 +143,7 @@ function RegisterModal() {
               <Button
                 colorScheme="brand"
                 size="lg"
+                aria-label="submit your email"
                 height="52px"
                 isFullWidth
                 isLoading={loading}
@@ -154,6 +159,7 @@ function RegisterModal() {
                 as="a"
                 target="_blank"
                 size="lg"
+                aria-label="show the calendar"
                 isFullWidth
                 isLoading={loading}
                 form="register"

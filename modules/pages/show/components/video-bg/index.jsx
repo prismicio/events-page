@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@chakra-ui/react';
-import { Video } from 'cloudinary-react';
 
 const VideoBg = ({ source }) => {
   const ref = useRef();
