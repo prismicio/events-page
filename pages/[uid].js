@@ -107,7 +107,7 @@ const StickyHeader = ({ logo, name, inView }) => {
         <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
           <Heading
             transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
-            transition="transform 0.2s ease-in-out"
+            transition="transform 0.2s ease-out 0.02s"
             opacity={inView ? 0 : 1}
             mt={1}
             as="h1"
