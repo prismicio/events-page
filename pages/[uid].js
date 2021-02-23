@@ -118,7 +118,7 @@ const StickyHeader = ({ logo, name, inView }) => {
           </Heading>
           <Box
             transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
-            transition="transform 0.2s ease-in-out 0.02s"
+            transition="transform 0.2s ease-out 0.04s"
             opacity={inView ? 0 : 1}
             w={['full', null, 'inherit']}
           >
