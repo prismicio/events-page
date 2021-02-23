@@ -18,7 +18,7 @@ import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
 import { useRouter } from 'next/router';
 import InView, { useInView } from 'react-intersection-observer';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -89,41 +89,46 @@ const Header = forwardRef(({ logo, label, name }, ref) => (
   </Box>
 ));
 
-const StickyHeader = ({ logo, name, inView }) => (
-  <Box
-    pos="fixed"
-    opacity={inView ? 0 : 1}
-    transition="opacity 130ms ease-out"
-    zIndex="13"
-    top="0"
-    w={['100%', null, '50%']}
-    bg="black"
-  >
-    <Box paddingRight={['8', null, '20']} py="10">
-      <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
-        <Heading
-          transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
-          transition="transform 0.2s ease-in-out"
-          opacity={inView ? 0 : 1}
-          mt={1}
-          as="h1"
-          color="white"
-          fontSize={['2xl', null, '3xl']}
-        >
-          {RichText.asText(name)}
-        </Heading>
-        <Box
-          transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
-          transition="transform 0.2s ease-in-out 0.02s"
-          opacity={inView ? 0 : 1}
-          w={['full', null, 'inherit']}
-        >
-          <RegisterModal logo={logo} />
-        </Box>
-      </Flex>
+const StickyHeader = ({ logo, name, inView }) => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(true), []);
+  return (
+    <Box
+      visibility={!loaded ? 'hidden' : 'visible'}
+      pos="fixed"
+      opacity={inView ? 0 : 1}
+      transition="opacity 130ms ease-out"
+      zIndex="13"
+      top="0"
+      w={['100%', null, '50%']}
+      bg="black"
+    >
+      <Box paddingRight={['8', null, '20']} py="10">
+        <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
+          <Heading
+            transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
+            transition="transform 0.2s ease-in-out"
+            opacity={inView ? 0 : 1}
+            mt={1}
+            as="h1"
+            color="white"
+            fontSize={['2xl', null, '3xl']}
+          >
+            {RichText.asText(name)}
+          </Heading>
+          <Box
+            transform={inView ? 'translateY(30px) ' : 'translateY(0px)'}
+            transition="transform 0.2s ease-in-out 0.02s"
+            opacity={inView ? 0 : 1}
+            w={['full', null, 'inherit']}
+          >
+            <RegisterModal logo={logo} />
+          </Box>
+        </Flex>
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 export default function IndexPage({ show }) {
   const router = useRouter();
@@ -133,6 +138,7 @@ export default function IndexPage({ show }) {
 
   const { ref, inView, entry } = useInView({
     threshold: 0,
+    initialInView: true,
   });
   console.log(inView);
 
@@ -188,7 +194,12 @@ export default function IndexPage({ show }) {
                 name={show?.name}
                 logo={show?.logo}
               />
-
+              <StickyHeader
+                inView={inView}
+                label={show?.label}
+                name={show?.name}
+                logo={show?.logo}
+              />
               <SliceZone slices={show?.body} />
             </Container>
           </Box>
@@ -197,15 +208,6 @@ export default function IndexPage({ show }) {
     </PrismicContext.Provider>
   );
 }
-
-/**
- *    <StickyHeader
-                inView={inView}
-                label={show?.label}
-                name={show?.name}
-                logo={show?.logo}
-              />
- */
 
 export async function getStaticPaths(context) {
   const data = await getAllShows();
