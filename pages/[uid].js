@@ -188,12 +188,7 @@ export default function IndexPage({ show }) {
                 name={show?.name}
                 logo={show?.logo}
               />
-              <StickyHeader
-                inView={inView}
-                label={show?.label}
-                name={show?.name}
-                logo={show?.logo}
-              />
+
               <SliceZone slices={show?.body} />
             </Container>
           </Box>
@@ -202,6 +197,15 @@ export default function IndexPage({ show }) {
     </PrismicContext.Provider>
   );
 }
+
+/**
+ *    <StickyHeader
+                inView={inView}
+                label={show?.label}
+                name={show?.name}
+                logo={show?.logo}
+              />
+ */
 
 export async function getStaticPaths(context) {
   const data = await getAllShows();
