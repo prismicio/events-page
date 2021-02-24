@@ -5,7 +5,7 @@ import Feature from './feature-item';
 
 const About = ({ description, features }) => {
   return (
-    <Box mt={4}>
+    <Box mt={4} bg="black">
       <Divider opacity="0.1" />
       <Text mt={8} color="white" fontSize="3xl">
         {RichText.asText(description)}

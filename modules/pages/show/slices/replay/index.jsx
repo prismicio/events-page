@@ -5,11 +5,12 @@ import ReplayItem from './replay-item';
 
 const ReplayList = ({ heading, topBarIcon, replays }) => {
   return (
-    <Box mt={20}>
+    <Box pt={20} bg="black">
       <Topbar heading={heading} icon={topBarIcon} />
       <VStack
         py={8}
         spacing={8}
+        bg="black"
         align="space-between"
         divider={<Divider opacity="10%" />}
       >

@@ -6,7 +6,7 @@ import htmlSerializer from '@/modules/commons/serializer';
 
 const Feature = ({ picture, title, description }) => {
   return (
-    <Box>
+    <Box bg="black">
       <Box borderRadius="md" overflow="hidden">
         <Imgix
           htmlAttributes={{ alt: picture?.alt || 'Product Meeetup' }}

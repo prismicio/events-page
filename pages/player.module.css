@@ -1,3 +1,4 @@
 .player {
   height: 100vh;
+  transform: translate(-19%, 0px);
 }

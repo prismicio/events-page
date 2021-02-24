@@ -5,7 +5,7 @@ import htmlSerializer from '@/modules/commons/serializer';
 
 const Topbar = ({ heading, icon }) => {
   return (
-    <Box>
+    <Box bg="black">
       <Flex alignItems="center" justify="space-between">
         <Heading
           letterSpacing="widest"

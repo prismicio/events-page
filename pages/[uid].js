@@ -134,6 +134,7 @@ const StickyHeader = ({ logo, name, inView }) => {
 };
 
 export default function IndexPage({ show }) {
+  const frame = useRef();
   const mainRef = useRef();
   const [isLive, setLive] = useState(true);
   const router = useRouter();
@@ -148,45 +149,19 @@ export default function IndexPage({ show }) {
 
   useEffect(() => {
     if (isLive) {
-      document.body.style.overflow = 'hidden';
-      gsap.to(
-        mainRef.current,
-        {
-          ease: 'slow',
-          duration: 0.5,
-          autoAlpha: 0,
-          scale: 1.1,
-          display: 'none',
-          transformOrigin: '50% 0%',
-        },
-        1.5,
-      );
+      //document.body.style.overflow = 'hidden';
     }
   }, [isLive]);
 
   const player = useRef();
-  useEffect(() => {
-    gsap
-      .to(
-        player.current,
-        {
-          ease: 'slow',
-          visibility: 'visible',
-          duration: 0.5,
-          autoAlpha: 1,
-        },
-        1.8,
-      )
-      .then(() => {
-        console.log(player.current);
-        //player.current.internalPlayer.playVideo();
-        //player.current.internalPlayer.unMute();
-      });
-  }, []);
+  useEffect(() => {}, []);
   const opts = {
     height: '100%',
     width: '100%',
     playerVars: {
+      rel: 0,
+      showinfo: 0,
+      modestlogo: 1,
       enablejsapi: 1,
     },
   };
@@ -195,26 +170,23 @@ export default function IndexPage({ show }) {
     <PrismicContext.Provider value={[show]}>
       <Layout>
         <Box
-          ref={player}
-          visibility="hidden"
-          pos="absolute"
-          top="0"
-          bottom="0"
+          position="fixed"
           left="0"
           right="0"
+          top="0"
+          bottom="0"
           height="100vh"
         >
           <YouTube
+            ref={frame}
             containerClassName={styles.player}
-            videoId="36YnV9STBqc"
+            videoId="uaTp4k7ToP4"
             opts={opts}
             onReady={(event) => {
               event.target.mute();
-              event.target.setVolume(50);
               event.target.playVideo();
             }}
           />
-          ;
         </Box>
         <Flex ref={mainRef} flexDirection={['column', 'column', 'row']}>
           <Box {...leftSideStyles}>
@@ -249,9 +221,16 @@ export default function IndexPage({ show }) {
                 h={show?.broadcast?.dimensions?.height}
               />
             </Container>
-            <VideoBg source={show?.video?.url} />
+
+            {!isLive && <VideoBg source={show?.video?.url} />}
           </Box>
-          <Box bg="black" width={['100%', null, '50%']} ml="auto">
+          <Box
+            zIndex={1000}
+            pos="relative"
+            bg="black"
+            width={['100%', null, '50%']}
+            ml="auto"
+          >
             <Container
               height={[null, null, '100vh']}
               maxW="full"
