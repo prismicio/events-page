@@ -162,6 +162,7 @@ export default function IndexPage({ show }) {
       rel: 0,
       showinfo: 0,
       modestlogo: 1,
+      controls: 0,
       enablejsapi: 1,
     },
   };
@@ -232,7 +233,7 @@ export default function IndexPage({ show }) {
             ml="auto"
           >
             <Container
-              height={[null, null, '100vh']}
+              height={[null, null, 'null']}
               maxW="full"
               paddingRight={['4', null, '20']}
               paddingLeft={['4', null, '0']}
