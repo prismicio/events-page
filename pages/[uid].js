@@ -8,6 +8,7 @@ import {
   Container,
   Heading,
   Divider,
+  Button,
 } from '@chakra-ui/react';
 import { getAllShows, getShowByUid } from 'lib/prismic';
 import About from '@/modules/pages/show/slices/about';
@@ -19,7 +20,7 @@ import Layout from '@/modules/layout';
 import { useRouter } from 'next/router';
 import { useInView } from 'react-intersection-observer';
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import gsap, { TimelineLite } from 'gsap';
 import YouTube from 'react-youtube';
 import styles from './player.module.css';
 
@@ -134,6 +135,7 @@ const StickyHeader = ({ logo, name, inView }) => {
 };
 
 export default function IndexPage({ show }) {
+  const timeline = new TimelineLite();
   const frame = useRef();
   const mainRef = useRef();
   const [isLive, setLive] = useState(true);
@@ -150,20 +152,30 @@ export default function IndexPage({ show }) {
 
   useEffect(() => {
     if (isHidden) {
-      gsap.to(
+      document.body.style.overflow = 'hidden';
+
+      timeline.to(
         mainRef.current,
         {
           ease: 'slow',
+          duration: 1,
           autoAlpha: 0,
         },
-        4,
+        'start',
       );
-    } else {
-      gsap.to(mainRef.current, {
-        ease: 'slow',
-        autoAlpha: 1,
-      });
+
+      return;
     }
+    document.body.style.overflow = 'scroll';
+    timeline.to(
+      mainRef.current,
+      {
+        ease: 'slow',
+        duration: 1,
+        autoAlpha: 1,
+      },
+      'start',
+    );
   }, [isHidden]);
 
   const player = useRef();
@@ -180,22 +192,42 @@ export default function IndexPage({ show }) {
     },
   };
 
-  return (
-    <PrismicContext.Provider value={[show]}>
-      <Box position="fixed" left="0" right="0" bg="red.500" zIndex="1000" p="4">
+  useEffect(() => {
+    setTimeout(() => {
+      setHidden(!isHidden);
+    }, 2000);
+  }, [isLive]);
+
+  /**
+   * useEffect(() => {
+    setTimeout(() => {
+      setHidden(!isHidden);
+    }, 2000);
+  }, [isLive]);
+   *       <Box position="fixed" left="0" right="0" bg="red.500" zIndex="1000" p="4">
         <button onClick={() => setLive(!isLive)}>setlive</button>
         <button onClick={() => setHidden(!isHidden)}>setHidden</button>
       </Box>
+   */
+
+  return (
+    <PrismicContext.Provider value={[show]}>
       <Layout>
         {isLive && (
           <Box
             position="fixed"
+            zIndex="0"
             left="0"
             right="0"
             top="0"
             bottom="0"
             height="100vh"
           >
+            {isHidden && (
+              <Box position="absolute" zIndex="1000" top="300" bg="red.500">
+                <Button onClick={() => setHidden(!isHidden)}>HIDE</Button>
+              </Box>
+            )}
             <YouTube
               ref={frame}
               containerClassName={styles.player}
