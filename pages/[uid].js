@@ -136,7 +136,8 @@ const StickyHeader = ({ logo, name, inView }) => {
 export default function IndexPage({ show }) {
   const frame = useRef();
   const mainRef = useRef();
-  const [isLive, setLive] = useState(false);
+  const [isLive, setLive] = useState(true);
+  const [isHidden, setHidden] = useState(false);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -148,13 +149,22 @@ export default function IndexPage({ show }) {
   });
 
   useEffect(() => {
-    console.log(isLive);
-    if (isLive) {
-      //document.body.style.overflow = 'hidden';
+    if (isHidden) {
+      gsap.to(
+        mainRef.current,
+        {
+          ease: 'slow',
+          autoAlpha: 0,
+        },
+        4,
+      );
     } else {
-      //document.body.style.overflow = 'hidden';
+      gsap.to(mainRef.current, {
+        ease: 'slow',
+        autoAlpha: 1,
+      });
     }
-  }, [isLive]);
+  }, [isHidden]);
 
   const player = useRef();
   useEffect(() => {}, []);
@@ -172,36 +182,32 @@ export default function IndexPage({ show }) {
 
   return (
     <PrismicContext.Provider value={[show]}>
-      <Box
-        position="absolute"
-        left="0"
-        right="0"
-        bg="red.500"
-        zIndex="1000"
-        p="4"
-      >
+      <Box position="fixed" left="0" right="0" bg="red.500" zIndex="1000" p="4">
         <button onClick={() => setLive(!isLive)}>setlive</button>
+        <button onClick={() => setHidden(!isHidden)}>setHidden</button>
       </Box>
       <Layout>
-        <Box
-          position="fixed"
-          left="0"
-          right="0"
-          top="0"
-          bottom="0"
-          height="100vh"
-        >
-          <YouTube
-            ref={frame}
-            containerClassName={styles.player}
-            videoId="uaTp4k7ToP4"
-            opts={opts}
-            onReady={(event) => {
-              event.target.mute();
-              event.target.playVideo();
-            }}
-          />
-        </Box>
+        {isLive && (
+          <Box
+            position="fixed"
+            left="0"
+            right="0"
+            top="0"
+            bottom="0"
+            height="100vh"
+          >
+            <YouTube
+              ref={frame}
+              containerClassName={styles.player}
+              videoId="uaTp4k7ToP4"
+              opts={opts}
+              onReady={(event) => {
+                event.target.mute();
+                event.target.playVideo();
+              }}
+            />
+          </Box>
+        )}
         <Flex ref={mainRef} flexDirection={['column', 'column', 'row']}>
           <Box {...leftSideStyles}>
             <Container zIndex="6" centerContent justifyContent="center">
