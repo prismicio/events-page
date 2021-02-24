@@ -136,7 +136,7 @@ const StickyHeader = ({ logo, name, inView }) => {
 export default function IndexPage({ show }) {
   const frame = useRef();
   const mainRef = useRef();
-  const [isLive, setLive] = useState(true);
+  const [isLive, setLive] = useState(false);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -148,7 +148,10 @@ export default function IndexPage({ show }) {
   });
 
   useEffect(() => {
+    console.log(isLive);
     if (isLive) {
+      //document.body.style.overflow = 'hidden';
+    } else {
       //document.body.style.overflow = 'hidden';
     }
   }, [isLive]);
@@ -169,6 +172,16 @@ export default function IndexPage({ show }) {
 
   return (
     <PrismicContext.Provider value={[show]}>
+      <Box
+        position="absolute"
+        left="0"
+        right="0"
+        bg="red.500"
+        zIndex="1000"
+        p="4"
+      >
+        <button onClick={() => setLive(!isLive)}>setlive</button>
+      </Box>
       <Layout>
         <Box
           position="fixed"
