@@ -20,9 +20,11 @@ import Layout from '@/modules/layout';
 import { useRouter } from 'next/router';
 import { useInView } from 'react-intersection-observer';
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import gsap, { TimelineLite } from 'gsap';
+import gsap, { TimelineLite, CSSPlugin } from 'gsap';
 import YouTube from 'react-youtube';
 import styles from './player.module.css';
+
+gsap.registerPlugin(CSSPlugin);
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -138,7 +140,7 @@ export default function IndexPage({ show }) {
   const timeline = new TimelineLite();
   const frame = useRef();
   const mainRef = useRef();
-  const [isLive, setLive] = useState(true);
+  const [isLive] = useState(true);
   const [isHidden, setHidden] = useState(false);
   const router = useRouter();
   if (router.isFallback) {
