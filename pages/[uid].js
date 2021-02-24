@@ -17,8 +17,8 @@ import RegisterModal from '@/modules/pages/show/components/register-modal';
 import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
 import { useRouter } from 'next/router';
-import InView, { useInView } from 'react-intersection-observer';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { forwardRef, useEffect, useState } from 'react';
 
 const leftSideStyles = {
   display: 'inline-flex',

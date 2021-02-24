@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Divider, Text, VStack } from '@chakra-ui/react';
 import Topbar from '@/modules/pages/show/components/top-bar';
-import UpcomingItem from './upcoming-item';
+import CardUpcoming from './upcoming-item';
 
 const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
   return (
@@ -10,7 +10,7 @@ const UpcomingList = ({ heading, topBarIcon, events, eventIcon }) => {
       <VStack py={8} spacing={4} align="space-between">
         {events.length > 0 ? (
           events.map((event, index) => (
-            <UpcomingItem
+            <CardUpcoming
               key={`${event.date}-${index}`}
               event={event}
               icon={eventIcon}

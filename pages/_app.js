@@ -51,6 +51,13 @@ const customTheme = {
           border: '1px',
           px: '0.5em',
         },
+        live: {
+          pt: '0.10em',
+          bg: 'red.500',
+          color: 'white',
+          fontWeight: 'bold',
+          px: '0.5em',
+        },
       },
     },
     Text: {
