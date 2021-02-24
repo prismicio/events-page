@@ -187,7 +187,7 @@ export default function IndexPage({ show }) {
       rel: 0,
       showinfo: 0,
       modestlogo: 1,
-      controls: 0,
+      controls: 1,
       enablejsapi: 1,
     },
   };
@@ -224,8 +224,14 @@ export default function IndexPage({ show }) {
             height="100vh"
           >
             {isHidden && (
-              <Box position="absolute" zIndex="1000" top="300" bg="red.500">
-                <Button onClick={() => setHidden(!isHidden)}>HIDE</Button>
+              <Box position="absolute" zIndex="1000" bottom="20" right="10">
+                <Button
+                  size="lg"
+                  colorScheme="brand"
+                  onClick={() => setHidden(!isHidden)}
+                >
+                  Show the website
+                </Button>
               </Box>
             )}
             <YouTube
