@@ -17,8 +17,11 @@ import RegisterModal from '@/modules/pages/show/components/register-modal';
 import { PrismicContext } from 'contexts';
 import Layout from '@/modules/layout';
 import { useRouter } from 'next/router';
-import InView, { useInView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import YouTube from 'react-youtube';
+import styles from './player.module.css';
 
 const leftSideStyles = {
   display: 'inline-flex',
@@ -131,6 +134,8 @@ const StickyHeader = ({ logo, name, inView }) => {
 };
 
 export default function IndexPage({ show }) {
+  const mainRef = useRef();
+  const [isLive, setLive] = useState(true);
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -140,12 +145,78 @@ export default function IndexPage({ show }) {
     threshold: 0,
     initialInView: true,
   });
-  console.log(inView);
+
+  useEffect(() => {
+    if (isLive) {
+      document.body.style.overflow = 'hidden';
+      gsap.to(
+        mainRef.current,
+        {
+          ease: 'slow',
+          duration: 0.5,
+          autoAlpha: 0,
+          scale: 1.1,
+          display: 'none',
+          transformOrigin: '50% 0%',
+        },
+        1.5,
+      );
+    }
+  }, [isLive]);
+
+  const player = useRef();
+  useEffect(() => {
+    gsap
+      .to(
+        player.current,
+        {
+          ease: 'slow',
+          visibility: 'visible',
+          duration: 0.5,
+          autoAlpha: 1,
+        },
+        1.8,
+      )
+      .then(() => {
+        console.log(player.current);
+        //player.current.internalPlayer.playVideo();
+        //player.current.internalPlayer.unMute();
+      });
+  }, []);
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      enablejsapi: 1,
+    },
+  };
 
   return (
     <PrismicContext.Provider value={[show]}>
       <Layout>
-        <Flex flexDirection={['column', 'column', 'row']}>
+        <Box
+          ref={player}
+          visibility="hidden"
+          pos="absolute"
+          top="0"
+          bottom="0"
+          left="0"
+          right="0"
+          height="100vh"
+        >
+          <YouTube
+            containerClassName={styles.player}
+            videoId="36YnV9STBqc"
+            opts={opts}
+            onReady={(event) => {
+              event.target.mute();
+              event.target.setVolume(50);
+              event.target.playVideo();
+            }}
+          />
+          ;
+        </Box>
+        <Flex ref={mainRef} flexDirection={['column', 'column', 'row']}>
           <Box {...leftSideStyles}>
             <Container zIndex="6" centerContent justifyContent="center">
               <Text
