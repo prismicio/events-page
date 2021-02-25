@@ -182,7 +182,6 @@ export default function IndexPage({ show }) {
           </Box>
           <Box bg="black" width={['100%', null, '50%']} ml="auto">
             <Container
-              height={[null, null, '100vh']}
               maxW="full"
               paddingRight={['4', null, '20']}
               paddingLeft={['4', null, '0']}
