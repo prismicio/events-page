@@ -89,7 +89,7 @@ const Header = forwardRef(({ logo, label, name }, ref) => (
   </Box>
 ));
 
-const StickyHeader = ({ logo, name, inView }) => {
+const StickyHeader = React.memo(({ logo, name, inView }) => {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => setLoaded(true), []);
   return (
@@ -101,7 +101,7 @@ const StickyHeader = ({ logo, name, inView }) => {
       zIndex="13"
       top="0"
       w={['100%', null, '50%']}
-      bg="black"
+      background="black"
     >
       <Box paddingRight={['8', null, '20']} py="10">
         <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
@@ -128,7 +128,7 @@ const StickyHeader = ({ logo, name, inView }) => {
       </Box>
     </Box>
   );
-};
+});
 
 export default function IndexPage({ show }) {
   const router = useRouter();
