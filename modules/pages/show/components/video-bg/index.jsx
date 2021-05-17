@@ -19,15 +19,15 @@ const VideoBg = ({ source }) => {
       poster="/no-signal.jpg"
     >
       <source
-        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1613684508/last-test_jwynpc.mp4"
+        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1621258966/prismic-pm_ibyhar.mp4"
         type="video/mp4"
       />
       <source
-        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1613684508/last-test_jwynpc.webm"
+        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1621258966/prismic-pm_ibyhar.webm"
         type="video/webm"
       />
       <source
-        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1613684508/last-test_jwynpc.ogv"
+        src="https://res.cloudinary.com/dmtf1daqp/video/upload/q_auto/v1621258966/prismic-pm_ibyhar.ogv"
         type="video/ogg"
       />
     </Box>
